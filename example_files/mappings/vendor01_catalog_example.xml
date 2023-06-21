@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE Vendor
+        PUBLIC "-//YourCompany//DTD Vendor Article Format Version 1.0//EN" "vendor01.dtd">
+<Vendor VendorName="Acme DummyVendor"
+        VendorNumber="1111"
+        GLN="9111111111111">
+    <Buyer BuyerName="DummyBuyer"
+           BuyerNumber="9999"
+           GLN="9000140000000"/>
+    <PriceList Currency="EUR">
+        {% for article in articles %}
+        <ItemSection ItemNumber="{{article['SUPPLIER_AID']}}"
+                     Name="{{article['DESCRIPTION_SHORT']}}"
+                     PriceUnit="1"
+                     Unit="{{article['ORDER_UNIT']}}"
+                     ItemGroup="{{article['REFERENCE_FEATURE_GROUP_ID']}}"
+                     Blocked="N"
+                     Text="{{article['DESCRIPTION_LONG']}}"
+                     VAT="{{article['TAX']}}">
+            <PictureSection ItemNumber="{{article['SUPPLIER_AID']}}"
+                            FileName="{{article['MIME_DESCR']}}"
+                            PictureText=""
+                            ReplacementText=""
+                            Path="{{article['MIME_SOURCE']}}"/>
+        </ItemSection>
+        {% endfor %}
+        {% for article in articles %}
+        <PriceSection ItemNumber="{{article['SUPPLIER_AID']}}"
+                      Unit="{{article['ORDER_UNIT']}}"
+                      PriceMode="N"
+                      PriceType="DI"
+                      Price="{{article['PRICE_AMOUNT']}}"
+                      SpecialOffer="N"/>
+        {% endfor %}
+    </PriceList>
+</Vendor>

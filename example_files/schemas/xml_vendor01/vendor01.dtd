@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+
+<!ELEMENT Vendor (Buyer+ , PriceList*)>
+
+<!ATTLIST Vendor  VendorName   CDATA  #REQUIRED
+                    VendorNumber CDATA  #REQUIRED
+                    GLN          CDATA  #REQUIRED >
+<!ELEMENT Buyer EMPTY>
+
+<!ATTLIST Buyer  BuyerName  CDATA  #REQUIRED
+                   BuyerNumber  CDATA  #REQUIRED
+                   GLN          CDATA  #REQUIRED >
+
+<!ELEMENT PriceList (ItemSection* , PriceSection*)>
+
+<!ATTLIST PriceList  Currency  (EUR )  #REQUIRED
+                       Language  (DE)  #IMPLIED >
+
+<!ELEMENT ItemSection (PictureSection*)>
+
+<!ATTLIST ItemSection  ItemNumber       CDATA  #REQUIRED
+                         Name             CDATA  #REQUIRED
+                         PriceUnit        CDATA  #REQUIRED
+                         Unit             CDATA  #REQUIRED
+                         ItemGroup        CDATA  #REQUIRED
+                         Blocked          (Y | N)  #REQUIRED
+                         VAT              (0| 10 | 20 | 7 | 9 | 19)  #REQUIRED
+                         EAN              CDATA  #IMPLIED
+                         Text             CDATA  #IMPLIED
+                         InvoiceUnit      CDATA  #IMPLIED
+                         UnitFactor       CDATA  #IMPLIED
+                         EANInvoiceUnit   CDATA  #IMPLIED
+                         Special           (N | Y)  #IMPLIED
+                         ReplaceItem      CDATA  #IMPLIED >
+<!ELEMENT PictureSection EMPTY>
+
+<!ATTLIST PictureSection  ItemNumber      CDATA  #REQUIRED
+                            FileName        CDATA  #REQUIRED
+                            PictureText     CDATA  #IMPLIED
+                            ReplacementText CDATA  #IMPLIED
+                            Path            CDATA  #IMPLIED >
+<!ELEMENT PriceSection EMPTY>
+
+<!ATTLIST PriceSection  ItemNumber        CDATA  #REQUIRED
+                          Unit             CDATA  #REQUIRED
+                          PriceMode          (B | N )  #REQUIRED
+                          PriceType          (CA | DI)  #REQUIRED
+                          Price             CDATA  #REQUIRED
+                          SpecialOffer       (Y | N )  #REQUIRED
+                          ValidFrom         CDATA  #IMPLIED
+                          ValidTo           CDATA  #IMPLIED
+                          FromAmount        CDATA  #IMPLIED
+                          CustomerNumber    CDATA  #IMPLIED
+                          CustomGroupNumber CDATA  #IMPLIED
+                          PostcodeFrom CDATA  #IMPLIED
+                          PostcodeTo CDATA  #IMPLIED >

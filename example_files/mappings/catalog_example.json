@@ -1,0 +1,10 @@
+[{% for article in articles %}{
+    "id": "{{article['SUPPLIER_AID']}}",
+    "name": "{{article['DESCRIPTION_LONG']}}",
+    "price": {{article['PRICE_AMOUNT'].replace(",",".")}},
+    "tags": [{% for keyword in article['KEYWORDS'].split(',') %}"{{ keyword }}"{% if not loop.last %},{% endif %}{% endfor %}]
+}{% if not loop.last %},{% endif %}{% endfor %}]
+
+
+
+

@@ -1,0 +1,172 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE BMECAT SYSTEM "doc/bmecat_new_catalog_1_2.dtd">
+<BMECAT version="1.2" xmlns="http://www.bmecat.org/XMLSchema/1.2/bmecat_new_catalog">
+    {{ log('Let the magic begin!') }}
+    <HEADER>
+        <CATALOG>
+            <LANGUAGE>eng</LANGUAGE>
+            <CATALOG_ID>12348s512s1</CATALOG_ID>
+            <CATALOG_VERSION>100.000</CATALOG_VERSION>
+            <CATALOG_NAME>Office Supplies ({{articles|length}} products)</CATALOG_NAME>
+            <TERRITORY>SK</TERRITORY>
+            <CURRENCY>EUR</CURRENCY>
+            <MIME_ROOT>/mime-files/</MIME_ROOT>
+            <PRICE_FLAG type="incl_freight">TRUE</PRICE_FLAG>
+            <PRICE_FLAG type="incl_duty">TRUE</PRICE_FLAG>
+        </CATALOG>
+        <BUYER>
+            <BUYER_ID type="buyer_specific">100</BUYER_ID>
+            <BUYER_NAME>Dummy Buying Company</BUYER_NAME>
+            <ADDRESS type="buyer">
+                <NAME>Buying Company</NAME>
+                <NAME2>for Consumer Goods</NAME2>
+                <NAME3>s.r.o.</NAME3>
+                <CONTACT>Mr. Buyer</CONTACT>
+                <STREET>Buying Street 20</STREET>
+                <ZIP>90001</ZIP>
+                <CITY>Buytown</CITY>
+                <COUNTRY>Slovakia</COUNTRY>
+                <PHONE>+421 123 456 789</PHONE>
+                <FAX>+421 123 456 789</FAX>
+                <EMAIL>info@dummycompany.sk</EMAIL>
+                <!-- Use the get_status_code function to check the HTTP status code of an URL (website).
+                If the status code is 200 (indicating a successful HTTP request), display it within the URL tags. -->
+                {% if get_status_code('https://www.dummycompany.sk') == 200 %}<URL>dummycompany.sk</URL>{% endif %}
+            </ADDRESS>
+        </BUYER>
+        <AGREEMENT>
+            <AGREEMENT_ID>1</AGREEMENT_ID>
+            <DATETIME type="agreement_start_date">
+                <!-- Use the custom current_datetime function to get the current date and time.
+                Format the returned datetime object to a string in "YYYY-MM-DD" format. -->
+                <DATE>{{ current_datetime().strftime("%Y-%m-%d") }}</DATE>
+            </DATETIME>
+            <DATETIME type="agreement_end_date">
+                <!-- Use the custom custom_date function to create a date with specific values.
+                Format the returned date object to a string in "YYYY-MM-DD". -->
+                <DATE>{{ custom_date(2025, 1, 5).strftime("%Y-%m-%d") }}</DATE>
+            </DATETIME>
+        </AGREEMENT>
+        <SUPPLIER>
+            <SUPPLIER_ID type="buyer_specific">1000</SUPPLIER_ID>
+            <SUPPLIER_NAME>Dummy Supplier Company</SUPPLIER_NAME>
+            <ADDRESS type="supplier">
+                <NAME>Distribution Company</NAME>
+                <NAME2>for Consumer Goods</NAME2>
+                <NAME3>s.r.o.</NAME3>
+                <CONTACT>Mr. Dummy</CONTACT>
+                <STREET>Supplier Street 10</STREET>
+                <ZIP>90002</ZIP>
+                <ZIPBOX>123456</ZIPBOX>
+                <CITY>Suppliertown</CITY>
+                <COUNTRY>Slovakia</COUNTRY>
+                <PHONE>+421 987 654 321</PHONE>
+                <FAX>421 987 654 322</FAX>
+                <EMAIL>info@supplier.sk</EMAIL>
+                <URL>info@supplier.sk</URL>
+                <ADDRESS_REMARKS>ISO-certified supplier</ADDRESS_REMARKS>
+            </ADDRESS>
+            <MIME_INFO>
+                <MIME>
+                    <MIME_TYPE>image/jpeg</MIME_TYPE>
+                    <MIME_SOURCE>supplier_logo.jpg</MIME_SOURCE>
+                    <MIME_PURPOSE>logo</MIME_PURPOSE>
+                </MIME>
+            </MIME_INFO>
+        </SUPPLIER>
+    </HEADER>
+    <T_NEW_CATALOG>
+        <CATALOG_GROUP_SYSTEM>
+            <GROUP_SYSTEM_ID>1</GROUP_SYSTEM_ID>
+            <GROUP_SYSTEM_NAME>Self Defined</GROUP_SYSTEM_NAME>
+            <!-- Start iterating over each 'group' in the 'groups' list.
+            For each iteration, 'group' will hold the current group's information. -->
+            {% for group in groups %}
+            <!-- This block checks if the 'GROUP_ID' of the current 'group' is present in the list returned by the custom function
+            'get_groups_with_articles'. This function is expected to return a list of groups that contain articles.
+            If the current 'GROUP_ID' is found in that list, the code within this block is executed. -->
+            {% if group['GROUP_ID'] in get_groups_with_articles(articles, groups) %}
+            <CATALOG_STRUCTURE type="{{ group['CATALOG_STRUCTURE'] }}">
+                <GROUP_ID>{{ group['GROUP_ID'] }}</GROUP_ID>
+                <GROUP_NAME>{{ group['GROUP_NAME'] }}</GROUP_NAME>
+                <GROUP_DESCRIPTION>{{ group['GROUP_DESCRIPTION'] }}</GROUP_DESCRIPTION>
+                <PARENT_ID>{{ group['PARENT_ID'] }}</PARENT_ID>
+            </CATALOG_STRUCTURE>
+            {% endif %}
+            {% endfor %}
+        </CATALOG_GROUP_SYSTEM>
+        <!-- Begin iterating over each article in the 'articles' list.
+        For each iteration, the 'article' variable will represent the current article. -->
+        {% for article in articles %}
+        {{ log(article['SUPPLIER_AID']) }}
+        <ARTICLE>
+            <SUPPLIER_AID>{{article['SUPPLIER_AID']}}</SUPPLIER_AID>
+            <ARTICLE_DETAILS>
+                <!-- Apply the custom 'remove_accents' filter to remove all accent marks from the current article  -->
+                <DESCRIPTION_SHORT>{{article['DESCRIPTION_SHORT']|remove_accents }}</DESCRIPTION_SHORT>
+                <!-- Display the first fifty characters of the current 'article' within the 'DESCRIPTION_LONG' tags. -->
+                <DESCRIPTION_LONG>{{article['DESCRIPTION_LONG'][:50]}}</DESCRIPTION_LONG>
+                <EAN>{{article['EAN']}}</EAN>
+                <MANUFACTURER_AID>{{article['MANUFACTURER_AID']}}</MANUFACTURER_AID>
+                <MANUFACTURER_NAME>{{article['MANUFACTURER_NAME']}}</MANUFACTURER_NAME>
+                <DELIVERY_TIME>{{article['DELIVERY_TIME']}}</DELIVERY_TIME>
+                <!-- Begin iterating over each 'keyword' in the current 'article's 'KEYWORDS' attribute.
+                The 'KEYWORDS' attribute is a comma-separated string, which is split into individual keywords for the loop. -->
+                {% for keyword in article['KEYWORDS'].split(',') %}
+                <KEYWORD>{{keyword.strip()}}</KEYWORD>
+                {% endfor %}
+            </ARTICLE_DETAILS>
+            <ARTICLE_FEATURES>
+                <REFERENCE_FEATURE_SYSTEM_NAME>{{article['REFERENCE_FEATURE_SYSTEM_NAME']}}
+                </REFERENCE_FEATURE_SYSTEM_NAME>
+                <REFERENCE_FEATURE_GROUP_ID>{{article['REFERENCE_FEATURE_GROUP_ID']}}</REFERENCE_FEATURE_GROUP_ID>
+            </ARTICLE_FEATURES>
+            <ARTICLE_ORDER_DETAILS>
+                <ORDER_UNIT>{{article['ORDER_UNIT']}}</ORDER_UNIT>
+                <CONTENT_UNIT>{{article['CONTENT_UNIT']}}</CONTENT_UNIT>
+                <!-- Apply the 'int' filter to the current 'article', converting the value to an integer.  -->
+                <NO_CU_PER_OU>{{article['NO_CU_PER_OU']|int}}</NO_CU_PER_OU>
+                <PRICE_QUANTITY>{{article['PRICE_QUANTITY']|int}}</PRICE_QUANTITY>
+                <QUANTITY_MIN>{{article['QUANTITY_MIN']|int}}</QUANTITY_MIN>
+                <QUANTITY_INTERVAL>{{article['QUANTITY_INTERVAL']|int}}</QUANTITY_INTERVAL>
+            </ARTICLE_ORDER_DETAILS>
+            <ARTICLE_PRICE_DETAILS>
+                <DATETIME type="valid_start_date">
+                    <DATE>{{article['DATETIME start']}}</DATE>
+                </DATETIME>
+                <DATETIME type="valid_end_date">
+                    <DATE>{{article['DATETIME end']}}</DATE>
+                </DATETIME>
+                <ARTICLE_PRICE price_type="{{article['ARTICLE_PRICE price_type']}}">
+                    <!-- Apply the 'float' filter to the current 'article', converting the value to a float value.  -->
+                    <PRICE_AMOUNT>{{article['PRICE_AMOUNT']|float}}</PRICE_AMOUNT>
+                    <PRICE_CURRENCY>EUR</PRICE_CURRENCY>
+                    <TAX>{{article['TAX']}}</TAX>
+                </ARTICLE_PRICE>
+            </ARTICLE_PRICE_DETAILS>
+            <MIME_INFO>
+                <MIME>
+                    <MIME_TYPE>image/jpeg</MIME_TYPE>
+                    <MIME_SOURCE>{{article['MIME_SOURCE']}}</MIME_SOURCE>
+                    <MIME_DESCR>{{article['MIME_DESCR']}}</MIME_DESCR>
+                    <MIME_PURPOSE>{{article['MIME_PURPOSE']}}</MIME_PURPOSE>
+                    <MIME_ORDER>1</MIME_ORDER>
+                </MIME>
+            </MIME_INFO>
+        </ARTICLE>
+        {% endfor %}
+        <!-- Start iterating over each 'article' in the 'articles' list.
+        For each iteration, 'article' will hold the current article's information. -->
+        {% for article in articles %}
+        <!-- For each 'article', split its 'CATALOG_GROUP_ID' attribute (which is a comma-separated string) into individual group IDs.
+        Then, start iterating over each 'group_id'. -->
+        {% for group_id in article['CATALOG_GROUP_ID'].split(',') %}
+        <ARTICLE_TO_CATALOGGROUP_MAP>
+            <ART_ID>{{article['SUPPLIER_AID']}}</ART_ID>
+            <CATALOG_GROUP_ID>{{group_id}}</CATALOG_GROUP_ID>
+        </ARTICLE_TO_CATALOGGROUP_MAP>
+        {% endfor %}
+        {% endfor %}
+    </T_NEW_CATALOG>
+    {{ log('The file has been generated!') }}
+</BMECAT>

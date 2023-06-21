@@ -1,0 +1,4 @@
+Supplier ID; Article ID; EAN Code; Description
+{% for article in example_articles %}
+    Supplier123;{{article['SUPPLIER_AID']}};{{article['EAN']}};{{article['DESCRIPTION_SHORT']}}
+{% endfor %}
