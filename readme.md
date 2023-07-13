@@ -1,30 +1,44 @@
-# JinjaXCat
-JinjaXCat is a powerful tool designed to simplify the process of creating any text-based catalogs.
-It utilizes the Jinja2 templating engine to dynamically generate catalog content, offering control through either a Command Line Interface (CLI) or a Graphic User Interface (GUI).
-JinjaXCat can parse data from CSV, Excel, or JSON files, allowing for a wide range of use cases.
+# JinjaXcat
 
-## Project Background and Motivation
-JinjaXCat was developed in response to a need for a straightforward and effective solution for generating any text-based catalog files, particularly BMEcat XML catalogs.
-It offers customizable approach compared to existing BMEcat converters like the OpenSource BMEcat Converter.
+JinjaXcat is a tool designed to simplify the process of creating text-based and Excel e-procurement catalogs.
+It utilizes the power of the Jinja2 templating engine to dynamically generate catalog content, providing control through
+an app based on the Streamlit framework. JinjaXcat can interpret input data from CSV, XLSX, JSON, and REST (API) files.
 
-The strength of JinjaXCat lies in its use of the Jinja2 templating engine, making it a versatile and powerful tool for catalog generation.
-Unlike the OpenSource BMEcat Converter and similar tools, JinjaXCat aims to provide a fully customizable approach by utilizing templates.
+### Online Preview
+
+You can preview the tool online at [jinjaxcat.foka.app](https://jinjaxcat.foka.app).
+It is continuously and automatically deployed from this repository.
+
+### Project Background and Motivation
+
+JinjaXcat was developed in response to a need for a simple yet effective solution for generating e-procurement catalog
+files.
+The strength of this tool lies in its utilization of the Jinja2 templating engine and the flexibility to write custom
+Python functions for enhancing catalog data, which makes it a versatile and robust solution for catalog generation.
+The goal is to provide a fully customizable approach by utilizing premade templates to generate the desired output
+catalog file.
+
+Initially developed in 2021 as a Command Line Interface tool, it later evolved into an executable application with a
+GUI. The first graphical interface was created using the Eel framework, further enhanced by Alpine.js, and styled with
+Tailwind CSS. You can find it in the [legacy branch](https://github.com/maRT-sk/jinjaxcat/tree/legacy-eel).
+Finally, the decision was made to transition the project to the Streamlit framework, primarily due to its advanced
+built-in frontend capabilities and its resemblance to the existing Tailwind/Alpine.js GUI.
 
 ## Getting Started
 
 ### Prerequisites
-Before installing and using JinjaXCat, ensure that Python and Git are installed on your computer.
-If your intention is to use a pre-built executable, you can skip both the installation and building steps for executables.
+
+Before you start with JinjaXcat, make sure Python and Git are already installed on your system.
 
 ### Installation
-To install JinjaXCat via the command line, please follow the steps below.
 
+Follow the steps below to install JinjaXcat via the command line.
 
 Clone the repository to your local machine:
 
 ```
-git clone https://github.com/maRT-sk/jinjaxcat.git
-cd jinjaxcat
+git clone https://github.com/maRT-sk/JinjaXcat.git
+cd JinjaXcat
 ```
 
 Set up a new Python virtual environment:
@@ -42,84 +56,32 @@ $ path\to\venv\Scripts\activate.bat
 $ source path/to/venv//bin/activate
 ```
 
-Install the necessary dependencies:
+Install the required dependencies:
 
 ```
 pip install -r requirements.txt
 ```
 
-## Building the Executable
-
-To package JinjaXCat into an executable file that can be run without a Python interpreter, you can use PyInstaller.
-
-Use the following command:
-```
-python -m eel jinjaxcat_start.py jinjaxcat --onefile --icon=.\jinjaxcat\gui\favicon.ico
-```
-
-If you have made changes to the Tailwind CSS classes, remember to build a new CSS file. Install Tailwind CSS via npm:
-```
-npm install -D tailwindcss
-npx tailwindcss init
-```
-
-The configuration is already set up in `tailwind.config.js`. You can start the Tailwind CLI build process:
-```
-tailwindcss -i ./jinjaxcat/gui/input-tailwind.css -o ./jinjaxcat/gui/output-tailwind.css --watch
-```
-
-## Running JinjaXCat
-Once you have set up the environment, you can run JinjaXCat using either the command-line interface (CLI) or the provided graphical user interface (GUI).
-Ensure that you run these commands from within the virtual environment where all the necessary dependencies have been installed.
-
-If you have already built the executable version of JinjaXCat, you can directly run the executable file without the need for the Python interpreter.
-
-### GUI Mode
-
-Running JinjaXCat via the Graphical User Interface (GUI) is easier and more user-friendly.
-To launch the GUI application, navigate to the project's directory and run the following command:
+Now, you are all set to run JinjaXcat:
 
 ```
-python jinjaxcat_start.py
+streamlit run app.py
 ```
 
-The GUI will be started as shown below:
-![alt text](docs/jinjaxcat_preview.png "jinjaxcat_preview")
-
-### CLI Mocde
-
-You can run the JinjaXCat directly from the command line. Navigate to the project's directory and run the following
-command:
-```
-python jinjaxcat_start.py --input_files INPUT_FILES --template_name TEMPLATE_NAME --output_file_name OUTPUT_FILE_NAME --is_prettify_output IS_PRETTIFIED --validation_type VALIDATION_TYPE --validation_file VALIDATION_FILE
-```
-
-Replace the all-capital parameters with your actual values.
-
-#### Required parameters:
-
-- **INPUT_FILES:** Path(s) to one or more input files containing data to be rendered into the template.
-- **TEMPLATE_NAME:** Path to the Jinja2 template file that defines the structure of the input data.
-- **OUTPUT_FILE_NAME:** Path to the output file where the rendered template will be written.
-
-#### Optional parameters:
-
-- **IS_PRETTIFIED:** Set this flag to True if you want the output to be formatted for readability. The default value
-  is `False`.
-- **VALIDATION_TYPE:** Set the output validation type. Use "xml" or "json" for output validation. The default value
-  is `None`.
-- **VALIDATION_FILE:** If validation is required, provide the path to the XSD/DTD schema for output validation. The
-  default value is `None`.
+At this point, your default web browser should launch automatically.
+If it doesn't, locate the URL in your command line interface and paste it into your browser manually.
 
 ## How to Render Input File Content to Template
 
-JinjaXCat allows you to include data from multiple file types into the template.
-You can use different file types simultaneously to generate a comprehensive output.
+JinjaXcat allows you to include input data from multiple file types into the template.
+You can use different file types simultaneously to generate a comprehensive output based on the selected template.
 
 ### CSV input files
 
+Any valid CSV file can be utilized; its encoding and delimiter will be detected automatically.  
 To access the data from a CSV file in the template, use the file name (without the suffix) as a variable.
-For example, if you have an Articles.csv, you can access respective columns in the template as follows:
+For example, if you have an articles.csv, you can access respective columns in the template as follows:
+
 ```
 {% for article in articles %}
 {{ article['COLUMN_NAME'] }}
@@ -130,10 +92,13 @@ Replace 'COLUMN_NAME' with the actual column name from the respective CSV file t
 output.
 
 ### JSON Input Files
-Similar to CSV files, each JSON file serves as a separate data source. In the
-template, you can access the data from a JSON file using the file name (without the suffix) as a variable.
+
+Similar to CSV files, each JSON file acts as an independent data source. In the template, the data from a JSON file can
+be accessed by using the filename (without the extension) as a variable. Note that currently can be used only JSON files
+consisting of an array of objects, where each object represents an item.
 
 For example, if you have a data.json file, you can access its properties in the template as follows:
+
 ```
 {% for article in articles %}
 {{ article['PROPERTY_NAME'] }}
@@ -143,11 +108,26 @@ For example, if you have a data.json file, you can access its properties in the 
 Replace 'PROPERTY_NAME' with the actual property name from the JSON file that you want to include in the rendered
 output.
 
+### REST Input Files
+
+JinjaXcat also allows the uploading of basic .rest files that contain a GET request returning a JSON array of objects.
+Currently, only JSON responses that consist of an array of objects are supported.  
+Here's an example of a GET request to obtain a JSON file as input data:
+
+```http request
+GET https://jsonplaceholder.typicode.com/todos
+Accept: application/json
+Accept-Encoding: gzip, deflate
+```
+
+Note: The referencing in the template is the same as for JSON inputs.
+
 ### Excel Input Files
-Excel files contain multiple sheets, each representing a separate data source. To access the data from different sheets
-in the template, combine the file name (without the suffix) with the sheet name using an underscore (_) as a separator.
-For example, if you have an example.xlsx file with two sheets named Sheet1 and Sheet2, you can access their respective
-data in the template as follows:
+
+Excel files with multiple sheets can also be uploaded, where each sheet represents a separate 2D data source starting
+from the first cell. To access data from various sheets in the template, join the filename (without the extension) and
+the sheet name using an underscore (_) as a separator. For example, if there's an 'example.xlsx' file with two sheets
+named 'Sheet1' and 'Sheet2', their respective data can be accessed in the text-based template in the following way:
 
 ```
 {% for row in example_sheet1 %}
@@ -162,34 +142,68 @@ data in the template as follows:
 Replace 'COLUMN_NAME' with the actual column name from the respective sheet that you want to include in the rendered
 output.
 
+## Template Files
+
+JinjaXcat provides the flexibility to generate any text-based and XLSX output files.
+You can define templates using the Jinja2 syntax and render data from your input files into the desired format.
+
+### Text-based Templates
+
+You can generate CSV, TXT, XML, CIF, JSON, or any other text-based file formats.
+To create a template for a specific file format, define the structure and content using the appropriate syntax.
+Customize the template to include placeholders and tags that will be replaced with the actual data during the rendering
+process. Here's an example of a template for a CSV file:
+
+```csv
+Supplier ID; Article ID; EAN Code; Description
+{% for article in example_articles %}
+Supplier123;{{ article['SUPPLIER_AID'] }};{{ article['EAN'] }};{{ article['DESCRIPTION_SHORT'] }}
+{% endfor %}
+```
+
+In this example, each row in the CSV file represents an article, with columns corresponding to attributes such as
+Supplier ID, Article ID, EAN Code, and Description.
+With JinjaXcat, you have the flexibility to generate a wide range of text-based output files, allowing you to seamlessly
+integrate the generated content into your workflows or applications.
+
+### XLSX templates
+
+When creating an XLSX template, it's necessary to use Jinja2 syntax in each cell where data is to be rendered.
+The rendered values will populate all cells beneath, corresponding to the input's length, the first cell included.
+To correctly shape the data, you must invoke the custom global variable {{split}}, which splits the data into new rows.
+
+Here's an example of how to use Jinja2 syntax in a cell to get all SUPPLIER_AIDs:
+
+```
+{% for article in articles %}{{article['SUPPLIER_AID']}}{{split}}{% endfor %}
+```
+
 ## Jinja2 Filters in Templates
 
-JinjaXCat provides [builtin Jinja2 filters](https://jinja.palletsprojects.com/en/3.1.x/templates/#builtin-filters)  that
-you can use to manipulate and format data within your templates.
-These filters are readily available and can be used out of the box.
+JinjaXcat provides [builtin Jinja2 filters](https://jinja.palletsprojects.com/en/3.1.x/templates/#builtin-filters)  that
+you can use to manipulate and format data within your templates. These filters are available and can be used out of the
+box.
 
-In addition to the default filters, JinjaXCat also includes prebuilt custom filters and globals.
+In addition to the default filters, JinjaXcat also includes prebuilt custom filters and globals.
 These filters and variables are specifically designed to enhance the capabilities of the templating engine and provide
 additional functionality to your templates
-Some of the prebuilt filters and globals available in JinjaXCat include:
+Some of the prebuilt filters and globals available in JinjaXcat include:
 
 - remove_accents: A filter that removes accents from text, useful for normalizing and cleaning up strings.
 - current_datetime: A global that returns the current date and time, providing you with real-time information within
   your templates.
 - custom_date: A global that allows you to generate custom-formatted dates, giving you control over the date
   representation in your templates.
-- log: A global that enables logging within your templates, allowing you to output messages or debug information during
-  the rendering process.
 - get_status_code: A global that retrieves the status code of an HTTP request, useful for fetching status_code from
   external APIs or web services.
 - get_groups_with_articles: A global that retrieves groups with associated articles, useful for BMEcat catalogs to
   filter out groups without any articles.
 
-As a developer, you can add custom filters and globals to JinjaXCat.
-Simply define and register them within the CustomEnvironment class in the `.\jinjaxcat\logic\environment.py` file.
+As a developer, you can add custom filters and globals to JinjaXcat.
+Simply define and register them within the CustomEnvironment class in the `.\utils\environment.py` file.
 This allows you to enhance the templating engine to meet your specific needs and requirements.
 
-Showcases the usage of filters and globals within a JinjaXCat template:
+The usage of filters and globals within a JinjaXcat template:
 
 ```XML
  {% for article in articles %}
@@ -219,36 +233,18 @@ Showcases the usage of filters and globals within a JinjaXCat template:
 </ARTICLE>{% endfor %}
 ```
 
-## Output Files
-
-JinjaXCat provides the flexibility to generate any text-based output files in multiple formats based on your specific
-requirements. You can define templates using the Jinja2 syntax and render data from your input files into the desired
-format.
-For example, you can generate CSV, TXT, XML, JSON, or any other text-based file formats.
-To create a template for a specific file format, define the structure and content using the appropriate syntax.
-Customize the template to include placeholders and tags that will be replaced with the actual data during the rendering
-process. Here's an example of a template for a CSV file:
-
-```csv
-Supplier ID; Article ID; EAN Code; Description
-{% for article in example_articles %}
-    Supplier123;{{ article['SUPPLIER_AID'] }};{{ article['EAN'] }};{{ article['DESCRIPTION_SHORT'] }}
-{% endfor %}
-```
-
-In this example, each row in the CSV file represents an article, with columns corresponding to attributes such as
-Supplier ID, Article ID, EAN Code, and Description.
-You can adapt this template or create new templates to match the desired structure and format for your text-based output
-files.
-With JinjaXCat, you have the flexibility to generate a wide range of text-based output files, allowing you to seamlessly
-integrate the generated content into your workflows or applications.
-
 ## Development Status
-JinjaXCat is currently under active development, and certain features and functionalities may be subject to change.
-At present, the most extensively tested and supported functionality in JinjaXCat is the generation of XML-based catalogs
-from CSV input files.
-As development progresses, additional features, improvements, and support for more file formats may be added. 
-Excel outputs are undergoing testing, but challenges arise due to their non-text nature.
 
-Your feedback and contributions are greatly appreciated in helping to shape and enhance the JinjaXCat project.
-Please exercise caution when using JinjaXCat in production environments, as the project is still in the ongoing development phase.
+Your feedback and contributions are greatly appreciated in helping to shape and enhance the JinjaXcat project.
+Please be cautious when using JinjaXcat in production environments, as the project is still in the ongoing
+development phase.
+If you have any questions, suggestions, or would like to discuss the project, feel free to reach out through the
+project's GitHub Discussions.
+
+### TODO
+
+- Introduce an option to select a delimiter, as the delimiter for CSV files is not always auto-detected correctly.
+- Implement support for all JSON input files. Currently, only JSON files containing an array of objects, where each
+  object represents an item, are supported.
+- Integrate XLS format support.
+- Optimize the rendering process to reduce the time needed for output file creation.

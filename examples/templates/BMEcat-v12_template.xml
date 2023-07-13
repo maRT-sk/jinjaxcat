@@ -4,7 +4,7 @@
     {{ log('Let the magic begin!') }}
     <HEADER>
         <CATALOG>
-            <LANGUAGE>eng</LANGUAGE>
+            <LANGUAGE>en</LANGUAGE>
             <CATALOG_ID>12348s512s1</CATALOG_ID>
             <CATALOG_VERSION>100.000</CATALOG_VERSION>
             <CATALOG_NAME>Office Supplies ({{articles|length}} products)</CATALOG_NAME>
@@ -81,6 +81,7 @@
             <GROUP_SYSTEM_NAME>Self Defined</GROUP_SYSTEM_NAME>
             <!-- Start iterating over each 'group' in the 'groups' list.
             For each iteration, 'group' will hold the current group's information. -->
+            {% if get_groups_with_articles(articles, groups) %}{% endif %}
             {% for group in groups %}
             <!-- This block checks if the 'GROUP_ID' of the current 'group' is present in the list returned by the custom function
             'get_groups_with_articles'. This function is expected to return a list of groups that contain articles.

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE Vendor
         PUBLIC "-//YourCompany//DTD Vendor Article Format Version 1.0//EN" "vendor01.dtd">
-<Vendor VendorName="Acme DummyVendor"
+<Vendor VendorName="Vendoro"
         VendorNumber="1111"
         GLN="9111111111111">
     <Buyer BuyerName="DummyBuyer"

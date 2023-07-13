@@ -1,0 +1,64 @@
+.main {
+    padding-left: 1.25rem;
+    padding-right: 1.25rem;
+}
+
+
+[title="View fullscreen"] {
+    right: -2.5rem;
+}
+
+
+label > div > p {
+    font-size: 1.125rem !important;
+    font-weight: 600;
+    letter-spacing: -0.005em;
+    padding: 0.5rem 0 0.5rem;
+    margin: 0;
+    line-height: 1.2;
+}
+
+.block-container {
+    padding-top: 1rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+}
+
+
+.container-xxl, #gridToolBar, footer,
+[aria-label="Menu"] > ul:nth-child(9), [aria-label="Menu"] > ul:nth-child(4),
+[aria-label="Menu"] > div:nth-child(8) {
+    display: none;
+    visibility: hidden;
+
+}
+
+
+[data-testid="stSidebar"] > div > div > div {
+    position: relative;
+    bottom: 3.5rem
+
+}
+
+
+[data-testid="stSidebar"][aria-expanded="true"] {
+    min-width: 25%;
+    width: 33%;
+    max-width: 50%;
+}
+
+
+@media (max-width: 767px) {
+    .main {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+
+    [data-testid="stSidebar"][aria-expanded="true"] {
+        min-width: 80%;
+        max-width: 80%;
+    }
+
+}
+
+

@@ -1,26 +1,28 @@
 # Node.js
-node_modules
+node_modules/
 package.json
 package-lock.json
 
 # SQLite
-db.sqlite3
 *.sqlite3
 
-# Python and env
+# Python
 *.pyc
 *.env
-venv
-.venv
+venv/
+.venv/
 
 # Docker
 .dockerignore
 
 # IDE
-.idea
-.ruff_cache
+.idea/
+.ruff_cache/
 
 # Miscellaneous
 *.spec
-build
-dist
+build/
+dist/
+
+# Project specific
+temp/
