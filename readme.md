@@ -82,7 +82,7 @@ Any valid CSV file can be utilized; its encoding and delimiter will be detected 
 To access the data from a CSV file in the template, use the file name (without the suffix) as a variable.
 For example, if you have an articles.csv, you can access respective columns in the template as follows:
 
-```
+```jinja
 {% for article in articles_csv %}
 {{ article['COLUMN_NAME'] }}
 {% endfor %}
@@ -98,7 +98,7 @@ be accessed by using the filename (without the extension) as a variable.
 
 For example, if you have a data.json file, you can access its properties in the template as follows:
 
-```
+```jinja
 {% for article in articles_csv %}
 {{ article['PROPERTY_NAME'] }}
 {% endfor %}
@@ -129,7 +129,7 @@ extension using an underscore (_) as a separator.
 For example, if you have a file named 'file.xlsx' with two sheets named 'Sheet1' and 'Sheet2', you can retrieve their
 respective data in the text-based template as follows:
 
-```
+```jinja
 {% for row in sheet1_file_xlsx %}
 {{ row['COLUMN_NAME'] }}
 {% endfor %}
@@ -154,7 +154,7 @@ To create a template for a specific file format, define the structure and conten
 Customize the template to include placeholders and tags that will be replaced with the actual data during the rendering
 process. Here's an example of a template for a CSV file:
 
-```csv
+```jinja
 Supplier ID; Article ID; EAN Code; Description
 {% for article in articles_json %}
 Supplier123;{{ article['SUPPLIER_AID'] }};{{ article['EAN'] }};{{ article['DESCRIPTION_SHORT'] }}
@@ -174,7 +174,7 @@ To correctly shape the data, you must invoke the custom global variable {{split}
 
 Here's an example of how to use Jinja2 syntax in a cell to get all SUPPLIER_AIDs:
 
-```
+```jinja
 {% for article in articles_json %}{{article['SUPPLIER_AID']}}{{split}}{% endfor %}
 ```
 
@@ -200,13 +200,13 @@ Some of the prebuilt filters and globals available in JinjaXcat include:
   filter out groups without any articles.
 
 As a developer, you can add custom filters and globals to JinjaXcat.
-Simply define and register them within the CustomEnvironment class in the `.\utils\environment.py` file.
+Simply define and register them within the SandboxedEnvironment class in the `.\utils\environment.py` file.
 This allows you to enhance the templating engine to meet your specific needs and requirements.
 
 The usage of filters and globals within a JinjaXcat template:
 
-```XML
- {% for article in articles_csv %}
+```jinja
+{% for article in articles_csv %}
 <ARTICLE>
     <SUPPLIER_AID>{{article['SUPPLIER_AID']}}</SUPPLIER_AID>
     <ARTICLE_DETAILS>
@@ -223,12 +223,13 @@ The usage of filters and globals within a JinjaXcat template:
         <VALID_FROM>{{ custom_date(2025, 1, 5).strftime("%Y-%m-%d") }}</VALID_FROM>
         <DELIVERY_TIME>{{article['DELIVERY_TIME']}}</DELIVERY_TIME>
         <!-- Begin iterating over each 'keyword' in the current 'article's 'KEYWORDS' attribute.
-        The 'KEYWORDS' attribute is a comma-separated string, which is split into individual keywords for the loop. -->
+        The 'KEYWORDS' is a comma-separated string, which is split into individual keywords for the loop. -->
         {% for keyword in article['KEYWORDS'].split(',') %}
         <KEYWORD>{{keyword.strip()}}</KEYWORD>
         {% endfor %}
     </ARTICLE_DETAILS>
-</ARTICLE>{% endfor %}
+</ARTICLE>
+{% endfor %}
 ```
 
 ## Development Status
