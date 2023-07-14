@@ -8,7 +8,7 @@
            BuyerNumber="9999"
            GLN="9000140000000"/>
     <PriceList Currency="EUR">
-        {% for article in articles %}
+        {% for article in articles_csv %}
         <ItemSection ItemNumber="{{article['SUPPLIER_AID']}}"
                      Name="{{article['DESCRIPTION_SHORT']}}"
                      PriceUnit="1"
@@ -24,7 +24,7 @@
                             Path="{{article['MIME_SOURCE']}}"/>
         </ItemSection>
         {% endfor %}
-        {% for article in articles %}
+        {% for article in articles_csv %}
         <PriceSection ItemNumber="{{article['SUPPLIER_AID']}}"
                       Unit="{{article['ORDER_UNIT']}}"
                       PriceMode="N"

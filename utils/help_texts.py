@@ -6,7 +6,7 @@ help_dict = {
         - **XLSX:** Upload workbooks with sheets containing 2D arrays starting from the first cell.
         - **JSON:** Upload JSON files for structured data representation, suitable for various applications.
         - **REST:** Upload basic REST files with a GET request returning a JSON array of objects are valid.\n
-        Check out the [example input files](https://github.com/maRT-sk/jinjaxcat/tree/master/examples/input_files) in the documentation for further understanding.
+        Check out the example input files in the [documentation](https://github.com/maRT-sk/jinjaxcat/tree/main/examples) for further understanding.
         """,
     "template_file":
         """
@@ -16,7 +16,7 @@ help_dict = {
         - **Text-based templates:** Upload any templates like .xml, .csv, .json, .txt that follow the Jinja2 conventions.
         - **XLSX templates:** Upload template fulfill JinjaXCat's custom Jinja2 requirements for parsing XLSX files.
         
-        Check out the [example Jinja2 templates](https://github.com/maRT-sk/jinjaxcat/tree/master/examples/templates) in the documentation for further understanding.
+        Check out the example Jinja2 templates in the [documentation](https://github.com/maRT-sk/jinjaxcat/tree/main/examples) for further understanding.
         """,
     "output_filename":
         """Specify the desired output filename **without the extension**.  
@@ -31,7 +31,7 @@ help_dict = {
         If you choose not to use this feature, JinjaXCat will generate the XML file as per the template provided without any validation checks.
         Note: If validation fails, the process will stop, and an error detailing the validation issue will be displayed.
         
-        Please find example [XSD and DTD ](https://github.com/maRT-sk/jinjaxcat/tree/master/examples/optional_xml_validation) files in the documentation for reference.
+        Please find example XSD and DTD files in the [documentation](https://github.com/maRT-sk/jinjaxcat/tree/main/examples) for reference.
         """,
     "beautify_output":
         """

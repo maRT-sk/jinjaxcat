@@ -1,0 +1,27 @@
+<list>
+    {# This code snippet / template is a really complex example #}
+    <completed>
+        {# Generate a reversed list of completed todos #}
+        {% set completed_todos = todos_rest|selectattr('completed', 'equalto', True)|list|reverse %}
+        {% for todo in completed_todos %}
+            <item>
+                <counter_id is_completed="{{ todo['completed']}}">{{ loop.index }}</counter_id>
+                <title>{{ todo['title']|capitalize|truncate(10, end='...!') }}</title>
+                <original_id>{{ todo['id'] }}</original_id>
+                <date>{{ custom_date(2025, 1, 5).strftime("%Y-%m-%d") }}</date>
+            </item>
+        {% endfor %}
+    </completed>
+    <todo>
+        {# Generate a sorted list of uncompleted todos by title #}
+        {% set uncompleted_todos = todos_rest|selectattr('completed', 'equalto', False)|list|sort(attribute='title') %}
+        {% for todo in uncompleted_todos %}
+            <item>
+                <counter_id is_completed="{{ todo['completed']}}">{{ loop.index }}</counter_id>
+                <title>{{ todo['title']|truncate(25, end='...')|upper }}</title>
+                <original_id>{{ todo['id'] }}</original_id>
+                <tododate>{{ current_datetime().strftime("%Y-%m-%d") }}</tododate>
+            </item>
+        {% endfor %}
+    </todo>
+</list>

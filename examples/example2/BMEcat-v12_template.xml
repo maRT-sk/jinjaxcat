@@ -7,7 +7,7 @@
             <LANGUAGE>en</LANGUAGE>
             <CATALOG_ID>12348s512s1</CATALOG_ID>
             <CATALOG_VERSION>100.000</CATALOG_VERSION>
-            <CATALOG_NAME>Office Supplies ({{articles|length}} products)</CATALOG_NAME>
+            <CATALOG_NAME>Office Supplies ({{articles_csv|length}} products)</CATALOG_NAME>
             <TERRITORY>SK</TERRITORY>
             <CURRENCY>EUR</CURRENCY>
             <MIME_ROOT>/mime-files/</MIME_ROOT>
@@ -81,12 +81,12 @@
             <GROUP_SYSTEM_NAME>Self Defined</GROUP_SYSTEM_NAME>
             <!-- Start iterating over each 'group' in the 'groups' list.
             For each iteration, 'group' will hold the current group's information. -->
-            {% if get_groups_with_articles(articles, groups) %}{% endif %}
-            {% for group in groups %}
+            {% if get_groups_with_articles(articles_csv, groups_csv) %}{% endif %}
+            {% for group in groups_csv %}
             <!-- This block checks if the 'GROUP_ID' of the current 'group' is present in the list returned by the custom function
-            'get_groups_with_articles'. This function is expected to return a list of groups that contain articles.
+            'get_groups_with_articles'. This function is expected to return a list of groups that contain articles_csv.
             If the current 'GROUP_ID' is found in that list, the code within this block is executed. -->
-            {% if group['GROUP_ID'] in get_groups_with_articles(articles, groups) %}
+            {% if group['GROUP_ID'] in get_groups_with_articles(articles_csv, groups_csv) %}
             <CATALOG_STRUCTURE type="{{ group['CATALOG_STRUCTURE'] }}">
                 <GROUP_ID>{{ group['GROUP_ID'] }}</GROUP_ID>
                 <GROUP_NAME>{{ group['GROUP_NAME'] }}</GROUP_NAME>
@@ -96,9 +96,9 @@
             {% endif %}
             {% endfor %}
         </CATALOG_GROUP_SYSTEM>
-        <!-- Begin iterating over each article in the 'articles' list.
+        <!-- Begin iterating over each article in the 'articles_csv' list.
         For each iteration, the 'article' variable will represent the current article. -->
-        {% for article in articles %}
+        {% for article in articles_csv %}
         {{ log(article['SUPPLIER_AID']) }}
         <ARTICLE>
             <SUPPLIER_AID>{{article['SUPPLIER_AID']}}</SUPPLIER_AID>
@@ -156,9 +156,9 @@
             </MIME_INFO>
         </ARTICLE>
         {% endfor %}
-        <!-- Start iterating over each 'article' in the 'articles' list.
+        <!-- Start iterating over each 'article' in the 'articles_csv' list.
         For each iteration, 'article' will hold the current article's information. -->
-        {% for article in articles %}
+        {% for article in articles_csv %}
         <!-- For each 'article', split its 'CATALOG_GROUP_ID' attribute (which is a comma-separated string) into individual group IDs.
         Then, start iterating over each 'group_id'. -->
         {% for group_id in article['CATALOG_GROUP_ID'].split(',') %}

@@ -1,4 +1,4 @@
-[{% for article in articles %}{
+[{% for article in articles_data_xlsx %}{
     "id": "{{article['SUPPLIER_AID']}}",
     "name": "{{article['DESCRIPTION_LONG']}}",
     "price": {{article['PRICE_AMOUNT'].replace(",",".")}},

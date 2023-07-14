@@ -1,8 +1,0 @@
-<todo>
-    {% for todo in todos %}
-    <item>
-        <id is_completed="{{todo['completed']}}">{{todo['id']}}</id>
-        <title>{{todo['title']}}</title>
-    </item>
-    {% endfor %}
-</todo>

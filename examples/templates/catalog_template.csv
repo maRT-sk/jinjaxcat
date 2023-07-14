@@ -1,3 +1,0 @@
-Supplier ID; Article ID; EAN Code; Description
-{% for article in articles %}Supplier123;{{article['SUPPLIER_AID']}};{{article['EAN']}};{{article['DESCRIPTION_SHORT']}}
-{% endfor %}
