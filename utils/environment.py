@@ -1,11 +1,11 @@
 # Python's built-in libraries
-import unicodedata
 from datetime import date, datetime
 
 # Third party imports
 import pandas as pd
 import requests
-from jinja2 import Environment
+import unicodedata
+from jinja2.sandbox import SandboxedEnvironment
 
 
 def remove_accents(input_str: str) -> str:
@@ -110,7 +110,7 @@ def get_groups_with_articles(articles, groups, delimiter=',', CATALOG_STRUCTURE=
     return groups_with_articles
 
 
-class CustomEnvironment(Environment):
+class CustomEnvironment(SandboxedEnvironment):
     """
     Custom Jinja2 environment with custom filters and global variables.
     """
