@@ -83,7 +83,7 @@ To access the data from a CSV file in the template, use the file name (without t
 For example, if you have an articles.csv, you can access respective columns in the template as follows:
 
 ```
-{% for article in articles %}
+{% for article in articles_csv %}
 {{ article['COLUMN_NAME'] }}
 {% endfor %}
 ```
@@ -94,13 +94,12 @@ output.
 ### JSON Input Files
 
 Similar to CSV files, each JSON file acts as an independent data source. In the template, the data from a JSON file can
-be accessed by using the filename (without the extension) as a variable. Note that currently can be used only JSON files
-consisting of an array of objects, where each object represents an item.
+be accessed by using the filename (without the extension) as a variable.
 
 For example, if you have a data.json file, you can access its properties in the template as follows:
 
 ```
-{% for article in articles %}
+{% for article in articles_csv %}
 {{ article['PROPERTY_NAME'] }}
 {% endfor %}
 ```
@@ -111,7 +110,6 @@ output.
 ### REST Input Files
 
 JinjaXcat also allows the uploading of basic .rest files that contain a GET request returning a JSON array of objects.
-Currently, only JSON responses that consist of an array of objects are supported.  
 Here's an example of a GET request to obtain a JSON file as input data:
 
 ```http request
@@ -124,17 +122,19 @@ Note: The referencing in the template is the same as for JSON inputs.
 
 ### Excel Input Files
 
-Excel files with multiple sheets can also be uploaded, where each sheet represents a separate 2D data source starting
-from the first cell. To access data from various sheets in the template, join the filename (without the extension) and
-the sheet name using an underscore (_) as a separator. For example, if there's an 'example.xlsx' file with two sheets
-named 'Sheet1' and 'Sheet2', their respective data can be accessed in the text-based template in the following way:
+You can also upload Excel files with multiple sheets, where each sheet represents a separate 2D data source starting
+from the first cell. To access data from different sheets in the template, combine the sheet name, file name, and
+extension using an underscore (_) as a separator.
+
+For example, if you have a file named 'file.xlsx' with two sheets named 'Sheet1' and 'Sheet2', you can retrieve their
+respective data in the text-based template as follows:
 
 ```
-{% for row in example_sheet1 %}
+{% for row in sheet1_file_xlsx %}
 {{ row['COLUMN_NAME'] }}
 {% endfor %}
 
-{% for row in example_sheet2 %}
+{% for row in sheet1_file_xlsx %}
 {{ row['COLUMN_NAME'] }}
 {% endfor %}
 ```
@@ -156,7 +156,7 @@ process. Here's an example of a template for a CSV file:
 
 ```csv
 Supplier ID; Article ID; EAN Code; Description
-{% for article in example_articles %}
+{% for article in articles_json %}
 Supplier123;{{ article['SUPPLIER_AID'] }};{{ article['EAN'] }};{{ article['DESCRIPTION_SHORT'] }}
 {% endfor %}
 ```
@@ -175,7 +175,7 @@ To correctly shape the data, you must invoke the custom global variable {{split}
 Here's an example of how to use Jinja2 syntax in a cell to get all SUPPLIER_AIDs:
 
 ```
-{% for article in articles %}{{article['SUPPLIER_AID']}}{{split}}{% endfor %}
+{% for article in articles_json %}{{article['SUPPLIER_AID']}}{{split}}{% endfor %}
 ```
 
 ## Jinja2 Filters in Templates
@@ -206,7 +206,7 @@ This allows you to enhance the templating engine to meet your specific needs and
 The usage of filters and globals within a JinjaXcat template:
 
 ```XML
- {% for article in articles %}
+ {% for article in articles_csv %}
 <ARTICLE>
     <SUPPLIER_AID>{{article['SUPPLIER_AID']}}</SUPPLIER_AID>
     <ARTICLE_DETAILS>
@@ -228,8 +228,6 @@ The usage of filters and globals within a JinjaXcat template:
         <KEYWORD>{{keyword.strip()}}</KEYWORD>
         {% endfor %}
     </ARTICLE_DETAILS>
-    <!-- Log SUPPLIER_AID to console  -->
-    {{ log(article['SUPPLIER_AID']) }}
 </ARTICLE>{% endfor %}
 ```
 
@@ -244,7 +242,6 @@ project's GitHub Discussions.
 ### TODO
 
 - Introduce an option to select a delimiter, as the delimiter for CSV files is not always auto-detected correctly.
-- Implement support for all JSON input files. Currently, only JSON files containing an array of objects, where each
   object represents an item, are supported.
 - Integrate XLS format support.
 - Optimize the rendering process to reduce the time needed for output file creation.

@@ -37,11 +37,15 @@ def display_input_files(input_files):
             fixed_name = dict_key_mapping[name]
         else:
             fixed_name = name
-        changed_filename = st.text_input(label=f"**📄 {name.upper()}**", value=fixed_name, placeholder=fixed_name,
+        changed_filename = st.text_input(label=f"**📄 {name}**", value=fixed_name,
                                          help=f""" Please rename this dataframe to match the variable name in your 
                                          Jinja2 template. By default, you can access data from the dataframe below 
                                          using the variable name **{fixed_name.strip()}** in your template.""", )
-        st.dataframe(pd.DataFrame(data), use_container_width=True)
+        file_type = name.split('_')[-1]
+        if file_type.lower() in ['json', 'rest']:
+            st.json(data)
+        else:
+            st.dataframe(pd.DataFrame(data), use_container_width=True)
         dict_key_mapping[name] = changed_filename
 
 

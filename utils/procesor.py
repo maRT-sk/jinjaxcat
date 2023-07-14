@@ -1,6 +1,7 @@
 # Standard library imports
 import csv
 import io
+import json
 import os
 import xml.dom.minidom
 from collections import namedtuple
@@ -105,10 +106,12 @@ def load_data(input_files: list) -> dict:
     # Loop over each input file
     for file in input_files:
 
-        basename, extension = os.path.splitext(file.name)  # Split the file name into the base name and the extension
-        if basename in data_dict:
+        extension = os.path.splitext(file.name)[-1]  # Get the extension name
+        name = file.name.replace('.','_')  # Get the filename
+
+        if name in data_dict:
             raise Exception(
-                f"Duplicate Detected: The file '{basename}' already exists. Please rename your input files.")
+                f"Duplicate Detected: The file '{name}' already exists. Please rename your input files.")
 
         if extension == '.csv':
             # Get the bytes object of the file and decode it using the detected encoding
@@ -118,14 +121,14 @@ def load_data(input_files: list) -> dict:
 
             # Load the CSV file into a pandas DataFrame and convert it to a dictionary
             df = pd.read_csv(io.StringIO(string_object), dtype=str, quoting=3, sep=None, engine="python").fillna('')
-            data_dict[basename] = df.to_dict('records')
+            data_dict[name] = df.to_dict('records')
 
         elif extension == '.xlsx':
             # Loop over each sheet in the Excel file
             for sheet in pd.ExcelFile(file).sheet_names:
                 df = pd.read_excel(file, sheet, engine='openpyxl', dtype=str).fillna('')
                 # Load the sheet into a pandas DataFrame and convert it to a dictionary
-                data_dict[f"{basename}_{sheet}"] = df.to_dict('records')
+                data_dict[f"{sheet}_{name}"] = df.to_dict('records')
 
         elif extension == '.rest':
             # Get the bytes object of the file and decode and extract the HTTP method and headers
@@ -140,16 +143,15 @@ def load_data(input_files: list) -> dict:
                 raise ValueError(f"Unsupported HTTP method: {method}")
             # If the response status code is 2xx, convert the JSON response to a  DataFrame and then to a dictionary
             if 200 <= response.status_code < 300:  # Status code is 2xx
-                json_data = response.json()
-                df = pd.DataFrame(json_data, dtype=str).fillna('')
-                data_dict[basename] = df.to_dict('records')
+                data_dict[name] = response.json()
             else:
                 response.raise_for_status()  # If the response status code is not 2xx, raise an exception
 
         elif extension == '.json':
             # Load the JSON file into a pandas DataFrame and convert it to a dictionary
-            df = pd.read_json(file, dtype=str).fillna('')
-            data_dict[basename] = df.to_dict('records')
+            data_dict[name] = json.loads(file.getvalue())
+
+
 
     return data_dict  # Return the dictionary containing all the data
 

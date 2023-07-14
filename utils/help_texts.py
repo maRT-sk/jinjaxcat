@@ -3,8 +3,8 @@ help_dict = {
         """
         Multiple input files in various formats can be uploaded.
         - **CSV:** Upload any comma-separated files. The delimiter is automatically detected.
-        - **XLSX:** Upload workbooks with sheets containing 2D arrays starting from the first cell
-        - **JSON:** Upload only JSON files that consist of an array of objects, where each object represents an item.
+        - **XLSX:** Upload workbooks with sheets containing 2D arrays starting from the first cell.
+        - **JSON:** Upload JSON files for structured data representation, suitable for various applications.
         - **REST:** Upload basic REST files with a GET request returning a JSON array of objects are valid.\n
         Check out the [example input files](https://github.com/maRT-sk/jinjaxcat/tree/master/examples/input_files) in the documentation for further understanding.
         """,
