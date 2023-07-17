@@ -12,7 +12,6 @@ import chardet
 import openpyxl
 import pandas as pd
 import requests
-import streamlit as st
 from jinja2 import FileSystemLoader, select_autoescape
 from lxml import etree
 
@@ -42,7 +41,6 @@ def change_dict_keys(original_dict: dict, key_mapping: dict) -> dict:
     return new_dict
 
 
-@st.cache_data(show_spinner="Generating output...")
 def generate_output(input_files: list, template_file: io.BytesIO, key_mapping: dict) -> bytes | str:
     """
     Function that generates a file from given input_files and a template_file.
@@ -54,7 +52,8 @@ def generate_output(input_files: list, template_file: io.BytesIO, key_mapping: d
     """
     template_bytes = template_file.getvalue()  # Get the bytes of the template file
     data_dict = load_data(input_files)  # Load the data from the input files into a dictionary
-    data_dict = change_dict_keys(data_dict, key_mapping)  # Change the keys in the loaded data
+    if key_mapping:  # If key_mapping is provided change the keys in the loaded data
+        data_dict = change_dict_keys(data_dict, key_mapping)
     environment = create_environment()  # Create a custom Jinja2 environment
 
     # Check the file extension to decide how to render the template
@@ -92,7 +91,6 @@ def generate_output(input_files: list, template_file: io.BytesIO, key_mapping: d
         return template.render(**data_dict)  # Render the template with the data dictionary and return the result
 
 
-@st.cache_data(show_spinner="Preparing data...")
 def load_data(input_files: list) -> dict:
     """
     Function that loads data from various file types (CSV, Excel, JSON, and REST).
@@ -107,7 +105,7 @@ def load_data(input_files: list) -> dict:
     for file in input_files:
 
         extension = os.path.splitext(file.name)[-1]  # Get the extension name
-        name = file.name.replace('.','_')  # Get the filename
+        name = file.name.replace('.', '_')  # Get the filename
 
         if name in data_dict:
             raise Exception(
@@ -150,8 +148,6 @@ def load_data(input_files: list) -> dict:
         elif extension == '.json':
             # Load the JSON file into a pandas DataFrame and convert it to a dictionary
             data_dict[name] = json.loads(file.getvalue())
-
-
 
     return data_dict  # Return the dictionary containing all the data
 

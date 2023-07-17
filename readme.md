@@ -79,7 +79,7 @@ You can use different file types simultaneously to generate a comprehensive outp
 ### CSV input files
 
 Any valid CSV file can be utilized; its encoding and delimiter will be detected automatically.  
-To access the data from a CSV file in the template, use the file name (without the suffix) as a variable.
+To access the data from a CSV file in the template, use the file name as a variable.
 For example, if you have an articles.csv, you can access respective columns in the template as follows:
 
 ```jinja
@@ -94,7 +94,7 @@ output.
 ### JSON Input Files
 
 Similar to CSV files, each JSON file acts as an independent data source. In the template, the data from a JSON file can
-be accessed by using the filename (without the extension) as a variable.
+be accessed by using the filename as a variable.
 
 For example, if you have a data.json file, you can access its properties in the template as follows:
 
@@ -231,6 +231,48 @@ The usage of filters and globals within a JinjaXcat template:
 </ARTICLE>
 {% endfor %}
 ```
+
+## Command Line Interface
+
+Running the entire application isn't necessary. Instead, you can use the CLI to run your configurations.
+JinjaXcat's CLI functionality, accessible through run_cfg.py, enables users to create output files based on a specified
+YAML configuration file.
+This feature is beneficial for automating processes or integrating JinjaXcat with other tools and workflows.
+
+The general usage via the command line is:
+
+```
+python run_cfg.py path/to/config.yaml
+```
+
+This YAML configuration includes:
+
+Mandatory Parameters:
+
+- **input_files:** These are the paths to the input files, which JinjaXcat uses as the data source.
+- **template_file:** The path to the template file that JinjaXcat uses to generate the output.
+- **output_file:** This is the path to the file where JinjaXcat will write the generated output.
+
+Optional Parameters:
+
+- **beautify_output:** If this parameter is set to True, JinjaXcat will format the output file for better readability.
+  If not provided, the default setting is False.
+- **schema_file:** This parameter is the path to an XML schema file. If provided, JinjaXcat will validate the XML output
+  against this schema, ensuring the output's structure and contents meet the defined requirements.
+
+Example configuration file:
+
+```yaml
+input_files:
+  - path/to/input1.csv
+  - path/to/input2.json
+template_file: path/to/template
+beautify_output: True # Optional, defaults to False
+schema_file: path/to/schema.xsd # Optional
+output_file: path/to/output.csv
+```
+
+Please note that all paths are relative to the location from where the command is executed.
 
 ## Development Status
 

@@ -10,6 +10,30 @@ from utils.help_texts import help_dict
 from utils.procesor import generate_output, load_data, prettify_output, validate_xml
 
 
+@st.cache_data(show_spinner="Preparing data...")
+def load_data_cached(input_files):
+    """
+    Caches and returns the data loaded from the provided input files.
+
+    :param input_files: List of paths to the input files.
+    :return: A dictionary mapping from file names to their loaded data.
+    """
+    return load_data(input_files)
+
+
+@st.cache_data(show_spinner="Generating output...")
+def generate_output_cached(input_files, template_file, key_mapping):
+    """
+    Caches and returns the output generated from the provided input files and template file.
+
+    :param input_files: List of paths to the input files.
+    :param template_file: Path to the template file.
+    :param key_mapping: Dictionary mapping from variable names to their values, for use in the template.
+    :return: The generated output as a string.
+    """
+    return generate_output(input_files, template_file, key_mapping)
+
+
 @st.cache_data
 def load_css(file_name):
     """
@@ -30,7 +54,7 @@ def display_input_files(input_files):
 
     :param input_files: A list of input files to be displayed.
     """
-    data_dict = load_data(input_files)
+    data_dict = load_data_cached(input_files)
     for name, data in data_dict.items():
         dict_key_mapping = st.session_state['key_mapping']
         if dict_key_mapping.get(name):
@@ -197,7 +221,7 @@ def run_output_procedure(input_files, template_file, output_filename, validation
     if not output_filename: output_filename = "output"  # noqa
     extension = template_file.name[template_file.name.rfind("."):]
 
-    output = generate_output(input_files, template_file, st.session_state['key_mapping'])
+    output = generate_output_cached(input_files, template_file, st.session_state['key_mapping'])
 
     if beautify_output:
         prettified_output = prettify_output(output, extension)

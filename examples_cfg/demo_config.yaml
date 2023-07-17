@@ -1,0 +1,7 @@
+input_files:
+  - examples/example2/articles.csv
+  - examples/example2/groups.csv
+template_file: examples/example2/BMEcat-v12_template.xml
+schema_file: examples/example2/bmecat_new_catalog_1_2.xsd
+beautify_output: True
+output_file: examples/example2/output.xml
