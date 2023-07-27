@@ -19,6 +19,16 @@ def remove_accents(input_str: str) -> str:
     return only_ascii.decode()
 
 
+def remove_leading_symbol(input_string: str, leading_symbol: str) -> str:
+    """
+    Removes a specified leading symbol from the beginning of a string.
+    :param input_string: The input string from which the leading symbol will be removed.
+    :param leading_symbol: The symbol to be removed from the beginning of the input string.
+    :return: A new string with the specified leading symbol removed from the beginning, if found.
+    """
+    return input_string.lstrip(leading_symbol)
+
+
 def current_datetime() -> datetime:
     """
     Gets the current timestamp.
@@ -119,11 +129,12 @@ class CustomEnvironment(SandboxedEnvironment):
         super().__init__(**kwargs)
         # Add custom filters to the environment
         self.filters['remove_accents'] = remove_accents
+        self.filters['remove_leading_symbol'] = remove_leading_symbol
         # Add custom global variables to the environment
         self.globals['current_datetime'] = current_datetime
         self.globals['custom_date'] = custom_date
         self.globals['log'] = log
         self.globals['get_status_code'] = get_status_code
         self.globals['get_groups_with_articles'] = get_groups_with_articles
-        self.globals['split'] = '##'
+        self.globals['split'] = '##'  # this global variable stores the separator used for Excel templates
         # Add more filters and globals if needed

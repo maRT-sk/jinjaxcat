@@ -190,6 +190,7 @@ additional functionality to your templates
 Some of the prebuilt filters and globals available in JinjaXcat include:
 
 - remove_accents: A filter that removes accents from text, useful for normalizing and cleaning up strings.
+- remove_leading_symbol: A filter that removes a specified leading symbol (e.g., a leading zero) from the beginning of a string.
 - current_datetime: A global that returns the current date and time, providing you with real-time information within
   your templates.
 - custom_date: A global that allows you to generate custom-formatted dates, giving you control over the date
