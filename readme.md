@@ -28,35 +28,42 @@ built-in frontend capabilities and its resemblance to the existing Tailwind/Alpi
 
 ### Prerequisites
 
+- Python 3.9 or newer
+- Git
+
 Before you start with JinjaXcat, make sure Python and Git are already installed on your system.
 
 ### Installation
 
 Follow the steps below to install JinjaXcat via the command line.
 
-Clone the repository to your local machine:
+Clone the repository to your machine:
 
 ```
 git clone https://github.com/maRT-sk/JinjaXcat.git
-cd JinjaXcat
+cd jinjaxcat
 ```
 
-Set up a new Python virtual environment:
+Within the project's root directory, create a new Python virtual environment named 'venv':
 
 ```
-$ python3 -m venv venv
+python -m venv venv
 ```
+
+_**Note:** If 'python' is not registered as an environment variable, replace 'python' with the path to your Python
+installation. The virtual environment's name 'venv' can be changed as per your preference. You can also choose to
+create/activate the virtual environment at a different path._
 
 Activate the virtual environment:
 
 ```
-# Windows
-$ path\to\venv\Scripts\activate.bat
+# Windows (PowerShell)
+.\venv\Scripts\activate
 # Unix
-$ source path/to/venv//bin/activate
+source ./venv/bin/activate
 ```
 
-Install the required dependencies:
+With the virtual environment activated, install the necessary dependencies:
 
 ```
 pip install -r requirements.txt
@@ -190,7 +197,8 @@ additional functionality to your templates
 Some of the prebuilt filters and globals available in JinjaXcat include:
 
 - remove_accents: A filter that removes accents from text, useful for normalizing and cleaning up strings.
-- remove_leading_symbol: A filter that removes a specified leading symbol (e.g., a leading zero) from the beginning of a string.
+- remove_leading_symbol: A filter that removes a specified leading symbol (e.g., a leading zero) from the beginning of a
+  string.
 - current_datetime: A global that returns the current date and time, providing you with real-time information within
   your templates.
 - custom_date: A global that allows you to generate custom-formatted dates, giving you control over the date
