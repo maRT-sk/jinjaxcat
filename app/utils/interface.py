@@ -6,8 +6,8 @@ import streamlit as st
 from lxml import etree
 from streamlit.runtime.scriptrunner import get_script_run_ctx
 
-from utils.help_texts import help_dict
-from utils.procesor import generate_output, load_data, prettify_output, validate_xml
+from .help_texts import help_dict
+from .procesor import generate_output, load_data, prettify_output, validate_xml
 
 
 @st.cache_data(show_spinner="Preparing data...")

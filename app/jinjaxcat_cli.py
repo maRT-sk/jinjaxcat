@@ -4,7 +4,7 @@ import os
 
 import yaml
 
-from utils.procesor import generate_output, validate_xml, prettify_output
+from .utils.procesor import generate_output, prettify_output, validate_xml
 
 
 class CustomUploadedFile(io.BytesIO):
@@ -29,7 +29,7 @@ def load_config(config_path):
     Load the configuration from a YAML file. Checks for mandatory keys and reports if any are missing.
     """
     mandatory_keys = ['input_files', 'template_file', 'output_file']
-    with open(config_path, 'r') as stream:
+    with open(config_path) as stream:
         try:
             cfg = yaml.safe_load(stream)
         except yaml.YAMLError as exc:
@@ -57,14 +57,9 @@ def write_output(output_content, file_path):
         f.write(output_content)
 
 
-if __name__ == '__main__':
-    # Set up argument parsing for command line usage
-    parser = argparse.ArgumentParser(description="Process input and template files according to the config file")
-    parser.add_argument('config', type=str, help="Path to the configuration yaml file")
-    args = parser.parse_args()
-
+def run_jinaxcat(config_path):
     # Load config file
-    config = load_config(args.config)
+    config = load_config(config_path)
     if not config:
         exit("Failed to load the configuration file.")
 
@@ -82,3 +77,12 @@ if __name__ == '__main__':
 
     # Write the output to file
     write_output(output, config['output_file'])
+
+
+if __name__ == '__main__':
+    # Set up argument parsing for command line usage
+    parser = argparse.ArgumentParser(description="Process input and template files according to the config file")
+    parser.add_argument('config', type=str, help="Path to the configuration yaml file")
+    args = parser.parse_args()
+
+    run_jinaxcat(args.config)

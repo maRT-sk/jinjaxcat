@@ -1,10 +1,10 @@
 # Python's built-in libraries
+import unicodedata
 from datetime import date, datetime
 
 # Third party imports
 import pandas as pd
 import requests
-import unicodedata
 from jinja2.sandbox import SandboxedEnvironment
 
 

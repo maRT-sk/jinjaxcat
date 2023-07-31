@@ -1,5 +1,7 @@
 # JinjaXcat
 
+![example workflow](https://github.com/maRT-sk/jinjaxcat/actions/workflows/test_workflow.yml/badge.svg)
+
 JinjaXcat is a tool designed to simplify the process of creating text-based and Excel e-procurement catalogs.
 It utilizes the power of the Jinja2 templating engine to dynamically generate catalog content, providing control through
 an app based on the Streamlit framework. JinjaXcat can interpret input data from CSV, XLSX, JSON, and REST (API) files.
@@ -28,7 +30,7 @@ built-in frontend capabilities and its resemblance to the existing Tailwind/Alpi
 
 ### Prerequisites
 
-- Python 3.9 or newer
+- Python 3.10 or newer
 - Git
 
 Before you start with JinjaXcat, make sure Python and Git are already installed on your system.
@@ -72,7 +74,7 @@ pip install -r requirements.txt
 Now, you are all set to run JinjaXcat:
 
 ```
-streamlit run app.py
+streamlit run app\jinjaxcat.py
 ```
 
 At this point, your default web browser should launch automatically.
@@ -209,7 +211,7 @@ Some of the prebuilt filters and globals available in JinjaXcat include:
   filter out groups without any articles.
 
 As a developer, you can add custom filters and globals to JinjaXcat.
-Simply define and register them within the SandboxedEnvironment class in the `.\utils\environment.py` file.
+Simply define and register them within the SandboxedEnvironment class in the `app\utils\environment.py` file.
 This allows you to enhance the templating engine to meet your specific needs and requirements.
 
 The usage of filters and globals within a JinjaXcat template:
@@ -251,7 +253,7 @@ This feature is beneficial for automating processes or integrating JinjaXcat wit
 The general usage via the command line is:
 
 ```
-python run_cfg.py path/to/config.yaml
+python app/jinjaxcat_cli.py path/to/config.yaml
 ```
 
 This YAML configuration includes:

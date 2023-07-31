@@ -24,7 +24,7 @@ st.set_page_config(
 )
 
 # Load custom CSS, and set the title and description for the Streamlit app
-st.markdown(load_css("utils/style.css"), unsafe_allow_html=True)
+st.markdown(load_css("app/utils/style.css"), unsafe_allow_html=True)
 st.title("JinjaXcat", anchor=False)  #
 st.markdown("Generate any excel and text based e-catalog with the power of Jinja templating!")
 

@@ -1,0 +1,7 @@
+input_files:
+  - test_data/articles.csv
+  - test_data/groups.csv
+template_file: test_data/template.xml
+schema_file: test_data/schema.xsd
+beautify_output: True
+output_file: test_data/output.xml

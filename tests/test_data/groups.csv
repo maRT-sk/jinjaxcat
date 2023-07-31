@@ -1,0 +1,11 @@
+﻿GROUP_ID;GROUP_NAME;GROUP_DESCRIPTION;CATALOG_STRUCTURE;PARENT_ID
+1;Catalog;Catalog description;root;0
+2;Super Category 1;Super Category 1 - Description;node;1
+201;Product Category 1;Product Category 1 - Description;leaf;2
+202;Product Category 2;Product Category 2 - Description;leaf;2
+203;Product Category 3;Product Category 3 - Description;leaf;2
+3;Super Category 2;Super Category 2 - Description;node;1
+301;Product Category 4;Product Category 4 - Description;leaf;3
+302;Product Category 5;Product Category 5 - Description;leaf;3
+303;Product Category 6;Product Category 6 - Description;leaf;3
+201201;Product Category 7;Product Category 7 - Description;leaf;201

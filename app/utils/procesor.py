@@ -16,7 +16,7 @@ from jinja2 import FileSystemLoader, select_autoescape
 from lxml import etree
 
 # Local application/library specific imports
-from utils.environment import CustomEnvironment
+from .environment import CustomEnvironment
 
 # Defining a named tuple to hold the result data
 Result = namedtuple('Result', ['type', 'msg', 'log'])

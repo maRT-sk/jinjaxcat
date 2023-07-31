@@ -33,6 +33,7 @@ Pympler==1.0.1
 python-dateutil==2.8.2
 pytz==2023.3
 pytz-deprecation-shim==0.1.0.post0
+PyYAML==6.0.1
 referencing==0.29.1
 requests==2.31.0
 rich==13.4.2
@@ -53,4 +54,3 @@ urllib3==2.0.3
 validators==0.20.0
 watchdog==3.0.0
 zipp==3.16.1
-PyYAML~=6.0

@@ -1,0 +1,1106 @@
+<?xml version="1.0" ?>
+<!DOCTYPE BMECAT
+  SYSTEM 'doc/bmecat_new_catalog_1_2.dtd'>
+<BMECAT xmlns="http://www.bmecat.org/XMLSchema/1.2/bmecat_new_catalog" version="1.2">
+  <HEADER>
+    <CATALOG>
+      <LANGUAGE>en</LANGUAGE>
+      <CATALOG_ID>12348s512s1</CATALOG_ID>
+      <CATALOG_VERSION>100.000</CATALOG_VERSION>
+      <CATALOG_NAME>Office Supplies (15 products)</CATALOG_NAME>
+      <TERRITORY>SK</TERRITORY>
+      <CURRENCY>EUR</CURRENCY>
+      <MIME_ROOT>/mime-files/</MIME_ROOT>
+      <PRICE_FLAG type="incl_freight">TRUE</PRICE_FLAG>
+      <PRICE_FLAG type="incl_duty">TRUE</PRICE_FLAG>
+    </CATALOG>
+    <BUYER>
+      <BUYER_ID type="buyer_specific">100</BUYER_ID>
+      <BUYER_NAME>Dummy Buying Company</BUYER_NAME>
+      <ADDRESS type="buyer">
+        <NAME>Buying Company</NAME>
+        <NAME2>for Consumer Goods</NAME2>
+        <NAME3>s.r.o.</NAME3>
+        <CONTACT>Mr. Buyer</CONTACT>
+        <STREET>Buying Street 20</STREET>
+        <ZIP>90001</ZIP>
+        <CITY>Buytown</CITY>
+        <COUNTRY>Slovakia</COUNTRY>
+        <PHONE>+421 123 456 789</PHONE>
+        <FAX>+421 123 456 789</FAX>
+        <EMAIL>info@dummycompany.sk</EMAIL>
+        <!-- Use the get_status_code function to check the HTTP status code of an URL (website).
+                If the status code is 200 (indicating a successful HTTP request), display it within the URL tags. -->
+      </ADDRESS>
+    </BUYER>
+    <AGREEMENT>
+      <AGREEMENT_ID>1</AGREEMENT_ID>
+      <DATETIME type="agreement_start_date">
+        <!-- Use the custom current_datetime function to get the current date and time.
+                Format the returned datetime object to a string in "YYYY-MM-DD" format. -->
+        <DATE>2023-07-31</DATE>
+      </DATETIME>
+      <DATETIME type="agreement_end_date">
+        <!-- Use the custom custom_date function to create a date with specific values.
+                Format the returned date object to a string in "YYYY-MM-DD". -->
+        <DATE>2025-01-05</DATE>
+      </DATETIME>
+    </AGREEMENT>
+    <SUPPLIER>
+      <SUPPLIER_ID type="buyer_specific">1000</SUPPLIER_ID>
+      <SUPPLIER_NAME>Dummy Supplier Company</SUPPLIER_NAME>
+      <ADDRESS type="supplier">
+        <NAME>Distribution Company</NAME>
+        <NAME2>for Consumer Goods</NAME2>
+        <NAME3>s.r.o.</NAME3>
+        <CONTACT>Mr. Dummy</CONTACT>
+        <STREET>Supplier Street 10</STREET>
+        <ZIP>90002</ZIP>
+        <ZIPBOX>123456</ZIPBOX>
+        <CITY>Suppliertown</CITY>
+        <COUNTRY>Slovakia</COUNTRY>
+        <PHONE>+421 987 654 321</PHONE>
+        <FAX>421 987 654 322</FAX>
+        <EMAIL>info@supplier.sk</EMAIL>
+        <URL>info@supplier.sk</URL>
+        <ADDRESS_REMARKS>ISO-certified supplier</ADDRESS_REMARKS>
+      </ADDRESS>
+      <MIME_INFO>
+        <MIME>
+          <MIME_TYPE>image/jpeg</MIME_TYPE>
+          <MIME_SOURCE>supplier_logo.jpg</MIME_SOURCE>
+          <MIME_PURPOSE>logo</MIME_PURPOSE>
+        </MIME>
+      </MIME_INFO>
+    </SUPPLIER>
+  </HEADER>
+  <T_NEW_CATALOG>
+    <CATALOG_GROUP_SYSTEM>
+      <GROUP_SYSTEM_ID>1</GROUP_SYSTEM_ID>
+      <GROUP_SYSTEM_NAME>Self Defined</GROUP_SYSTEM_NAME>
+      <!-- Start iterating over each 'group' in the 'groups' list.
+            For each iteration, 'group' will hold the current group's information. -->
+      <!-- This block checks if the 'GROUP_ID' of the current 'group' is present in the list returned by the custom function
+            'get_groups_with_articles'. This function is expected to return a list of groups that contain articles_csv.
+            If the current 'GROUP_ID' is found in that list, the code within this block is executed. -->
+      <CATALOG_STRUCTURE type="root">
+        <GROUP_ID>1</GROUP_ID>
+        <GROUP_NAME>Catalog</GROUP_NAME>
+        <GROUP_DESCRIPTION>Catalog description</GROUP_DESCRIPTION>
+        <PARENT_ID>0</PARENT_ID>
+      </CATALOG_STRUCTURE>
+      <!-- This block checks if the 'GROUP_ID' of the current 'group' is present in the list returned by the custom function
+            'get_groups_with_articles'. This function is expected to return a list of groups that contain articles_csv.
+            If the current 'GROUP_ID' is found in that list, the code within this block is executed. -->
+      <CATALOG_STRUCTURE type="node">
+        <GROUP_ID>2</GROUP_ID>
+        <GROUP_NAME>Super Category 1</GROUP_NAME>
+        <GROUP_DESCRIPTION>Super Category 1 - Description</GROUP_DESCRIPTION>
+        <PARENT_ID>1</PARENT_ID>
+      </CATALOG_STRUCTURE>
+      <!-- This block checks if the 'GROUP_ID' of the current 'group' is present in the list returned by the custom function
+            'get_groups_with_articles'. This function is expected to return a list of groups that contain articles_csv.
+            If the current 'GROUP_ID' is found in that list, the code within this block is executed. -->
+      <CATALOG_STRUCTURE type="leaf">
+        <GROUP_ID>201</GROUP_ID>
+        <GROUP_NAME>Product Category 1</GROUP_NAME>
+        <GROUP_DESCRIPTION>Product Category 1 - Description</GROUP_DESCRIPTION>
+        <PARENT_ID>2</PARENT_ID>
+      </CATALOG_STRUCTURE>
+      <!-- This block checks if the 'GROUP_ID' of the current 'group' is present in the list returned by the custom function
+            'get_groups_with_articles'. This function is expected to return a list of groups that contain articles_csv.
+            If the current 'GROUP_ID' is found in that list, the code within this block is executed. -->
+      <CATALOG_STRUCTURE type="leaf">
+        <GROUP_ID>202</GROUP_ID>
+        <GROUP_NAME>Product Category 2</GROUP_NAME>
+        <GROUP_DESCRIPTION>Product Category 2 - Description</GROUP_DESCRIPTION>
+        <PARENT_ID>2</PARENT_ID>
+      </CATALOG_STRUCTURE>
+      <!-- This block checks if the 'GROUP_ID' of the current 'group' is present in the list returned by the custom function
+            'get_groups_with_articles'. This function is expected to return a list of groups that contain articles_csv.
+            If the current 'GROUP_ID' is found in that list, the code within this block is executed. -->
+      <CATALOG_STRUCTURE type="leaf">
+        <GROUP_ID>203</GROUP_ID>
+        <GROUP_NAME>Product Category 3</GROUP_NAME>
+        <GROUP_DESCRIPTION>Product Category 3 - Description</GROUP_DESCRIPTION>
+        <PARENT_ID>2</PARENT_ID>
+      </CATALOG_STRUCTURE>
+      <!-- This block checks if the 'GROUP_ID' of the current 'group' is present in the list returned by the custom function
+            'get_groups_with_articles'. This function is expected to return a list of groups that contain articles_csv.
+            If the current 'GROUP_ID' is found in that list, the code within this block is executed. -->
+      <CATALOG_STRUCTURE type="node">
+        <GROUP_ID>3</GROUP_ID>
+        <GROUP_NAME>Super Category 2</GROUP_NAME>
+        <GROUP_DESCRIPTION>Super Category 2 - Description</GROUP_DESCRIPTION>
+        <PARENT_ID>1</PARENT_ID>
+      </CATALOG_STRUCTURE>
+      <!-- This block checks if the 'GROUP_ID' of the current 'group' is present in the list returned by the custom function
+            'get_groups_with_articles'. This function is expected to return a list of groups that contain articles_csv.
+            If the current 'GROUP_ID' is found in that list, the code within this block is executed. -->
+      <CATALOG_STRUCTURE type="leaf">
+        <GROUP_ID>301</GROUP_ID>
+        <GROUP_NAME>Product Category 4</GROUP_NAME>
+        <GROUP_DESCRIPTION>Product Category 4 - Description</GROUP_DESCRIPTION>
+        <PARENT_ID>3</PARENT_ID>
+      </CATALOG_STRUCTURE>
+      <!-- This block checks if the 'GROUP_ID' of the current 'group' is present in the list returned by the custom function
+            'get_groups_with_articles'. This function is expected to return a list of groups that contain articles_csv.
+            If the current 'GROUP_ID' is found in that list, the code within this block is executed. -->
+      <CATALOG_STRUCTURE type="leaf">
+        <GROUP_ID>302</GROUP_ID>
+        <GROUP_NAME>Product Category 5</GROUP_NAME>
+        <GROUP_DESCRIPTION>Product Category 5 - Description</GROUP_DESCRIPTION>
+        <PARENT_ID>3</PARENT_ID>
+      </CATALOG_STRUCTURE>
+      <!-- This block checks if the 'GROUP_ID' of the current 'group' is present in the list returned by the custom function
+            'get_groups_with_articles'. This function is expected to return a list of groups that contain articles_csv.
+            If the current 'GROUP_ID' is found in that list, the code within this block is executed. -->
+      <CATALOG_STRUCTURE type="leaf">
+        <GROUP_ID>303</GROUP_ID>
+        <GROUP_NAME>Product Category 6</GROUP_NAME>
+        <GROUP_DESCRIPTION>Product Category 6 - Description</GROUP_DESCRIPTION>
+        <PARENT_ID>3</PARENT_ID>
+      </CATALOG_STRUCTURE>
+      <!-- This block checks if the 'GROUP_ID' of the current 'group' is present in the list returned by the custom function
+            'get_groups_with_articles'. This function is expected to return a list of groups that contain articles_csv.
+            If the current 'GROUP_ID' is found in that list, the code within this block is executed. -->
+      <CATALOG_STRUCTURE type="leaf">
+        <GROUP_ID>201201</GROUP_ID>
+        <GROUP_NAME>Product Category 7</GROUP_NAME>
+        <GROUP_DESCRIPTION>Product Category 7 - Description</GROUP_DESCRIPTION>
+        <PARENT_ID>201</PARENT_ID>
+      </CATALOG_STRUCTURE>
+    </CATALOG_GROUP_SYSTEM>
+    <!-- Begin iterating over each article in the 'articles_csv' list.
+        For each iteration, the 'article' variable will represent the current article. -->
+    <ARTICLE>
+      <SUPPLIER_AID>71459824</SUPPLIER_AID>
+      <ARTICLE_DETAILS>
+        <!-- Apply the custom 'remove_accents' filter to remove all accent marks from the current article  -->
+        <DESCRIPTION_SHORT>QuickFlex</DESCRIPTION_SHORT>
+        <!-- Display the first fifty characters of the current 'article' within the 'DESCRIPTION_LONG' tags. -->
+        <DESCRIPTION_LONG>Flexible and fast solution for your needs.</DESCRIPTION_LONG>
+        <EAN>99945277</EAN>
+        <MANUFACTURER_AID>ZG5RT2L</MANUFACTURER_AID>
+        <MANUFACTURER_NAME>StellarTech</MANUFACTURER_NAME>
+        <DELIVERY_TIME>2</DELIVERY_TIME>
+        <!-- Begin iterating over each 'keyword' in the current 'article's 'KEYWORDS' attribute.
+                The 'KEYWORDS' attribute is a comma-separated string, which is split into individual keywords for the loop. -->
+        <KEYWORD>flexible</KEYWORD>
+        <KEYWORD>fast</KEYWORD>
+        <KEYWORD>versatile</KEYWORD>
+      </ARTICLE_DETAILS>
+      <ARTICLE_FEATURES>
+        <REFERENCE_FEATURE_SYSTEM_NAME>ECLASS-4.1
+                </REFERENCE_FEATURE_SYSTEM_NAME>
+        <REFERENCE_FEATURE_GROUP_ID>11-11-11-11</REFERENCE_FEATURE_GROUP_ID>
+      </ARTICLE_FEATURES>
+      <ARTICLE_ORDER_DETAILS>
+        <ORDER_UNIT>PA</ORDER_UNIT>
+        <CONTENT_UNIT>C62</CONTENT_UNIT>
+        <!-- Apply the 'int' filter to the current 'article', converting the value to an integer.  -->
+        <NO_CU_PER_OU>5</NO_CU_PER_OU>
+        <PRICE_QUANTITY>1</PRICE_QUANTITY>
+        <QUANTITY_MIN>1</QUANTITY_MIN>
+        <QUANTITY_INTERVAL>1</QUANTITY_INTERVAL>
+      </ARTICLE_ORDER_DETAILS>
+      <ARTICLE_PRICE_DETAILS>
+        <DATETIME type="valid_start_date">
+          <DATE>2022-01-01</DATE>
+        </DATETIME>
+        <DATETIME type="valid_end_date">
+          <DATE>2025-01-01</DATE>
+        </DATETIME>
+        <ARTICLE_PRICE price_type="net_customer">
+          <!-- Apply the 'float' filter to the current 'article', converting the value to a float value.  -->
+          <PRICE_AMOUNT>0.0</PRICE_AMOUNT>
+          <PRICE_CURRENCY>EUR</PRICE_CURRENCY>
+          <TAX>20</TAX>
+        </ARTICLE_PRICE>
+      </ARTICLE_PRICE_DETAILS>
+      <MIME_INFO>
+        <MIME>
+          <MIME_TYPE>image/jpeg</MIME_TYPE>
+          <MIME_SOURCE>71459824.png</MIME_SOURCE>
+          <MIME_DESCR>Flexible Solution</MIME_DESCR>
+          <MIME_PURPOSE>normal</MIME_PURPOSE>
+          <MIME_ORDER>1</MIME_ORDER>
+        </MIME>
+      </MIME_INFO>
+    </ARTICLE>
+    <ARTICLE>
+      <SUPPLIER_AID>71193397</SUPPLIER_AID>
+      <ARTICLE_DETAILS>
+        <!-- Apply the custom 'remove_accents' filter to remove all accent marks from the current article  -->
+        <DESCRIPTION_SHORT>ZenizGlos</DESCRIPTION_SHORT>
+        <!-- Display the first fifty characters of the current 'article' within the 'DESCRIPTION_LONG' tags. -->
+        <DESCRIPTION_LONG>Achieve radiant beauty with this illuminating skin</DESCRIPTION_LONG>
+        <EAN>94288294</EAN>
+        <MANUFACTURER_AID>LCN9W4J</MANUFACTURER_AID>
+        <MANUFACTURER_NAME>LuminaCosmetics</MANUFACTURER_NAME>
+        <DELIVERY_TIME>2</DELIVERY_TIME>
+        <!-- Begin iterating over each 'keyword' in the current 'article's 'KEYWORDS' attribute.
+                The 'KEYWORDS' attribute is a comma-separated string, which is split into individual keywords for the loop. -->
+        <KEYWORD>radiant</KEYWORD>
+        <KEYWORD>skincare</KEYWORD>
+        <KEYWORD>beauty</KEYWORD>
+        <KEYWORD>glow</KEYWORD>
+      </ARTICLE_DETAILS>
+      <ARTICLE_FEATURES>
+        <REFERENCE_FEATURE_SYSTEM_NAME>ECLASS-4.1
+                </REFERENCE_FEATURE_SYSTEM_NAME>
+        <REFERENCE_FEATURE_GROUP_ID>22-22-22-22</REFERENCE_FEATURE_GROUP_ID>
+      </ARTICLE_FEATURES>
+      <ARTICLE_ORDER_DETAILS>
+        <ORDER_UNIT>PF</ORDER_UNIT>
+        <CONTENT_UNIT>C62</CONTENT_UNIT>
+        <!-- Apply the 'int' filter to the current 'article', converting the value to an integer.  -->
+        <NO_CU_PER_OU>20</NO_CU_PER_OU>
+        <PRICE_QUANTITY>1</PRICE_QUANTITY>
+        <QUANTITY_MIN>1</QUANTITY_MIN>
+        <QUANTITY_INTERVAL>1</QUANTITY_INTERVAL>
+      </ARTICLE_ORDER_DETAILS>
+      <ARTICLE_PRICE_DETAILS>
+        <DATETIME type="valid_start_date">
+          <DATE>2022-01-01</DATE>
+        </DATETIME>
+        <DATETIME type="valid_end_date">
+          <DATE>2025-01-01</DATE>
+        </DATETIME>
+        <ARTICLE_PRICE price_type="net_customer">
+          <!-- Apply the 'float' filter to the current 'article', converting the value to a float value.  -->
+          <PRICE_AMOUNT>0.0</PRICE_AMOUNT>
+          <PRICE_CURRENCY>EUR</PRICE_CURRENCY>
+          <TAX>10</TAX>
+        </ARTICLE_PRICE>
+      </ARTICLE_PRICE_DETAILS>
+      <MIME_INFO>
+        <MIME>
+          <MIME_TYPE>image/jpeg</MIME_TYPE>
+          <MIME_SOURCE>71193397.png</MIME_SOURCE>
+          <MIME_DESCR>Radiant Skincare</MIME_DESCR>
+          <MIME_PURPOSE>normal</MIME_PURPOSE>
+          <MIME_ORDER>1</MIME_ORDER>
+        </MIME>
+      </MIME_INFO>
+    </ARTICLE>
+    <ARTICLE>
+      <SUPPLIER_AID>36195416</SUPPLIER_AID>
+      <ARTICLE_DETAILS>
+        <!-- Apply the custom 'remove_accents' filter to remove all accent marks from the current article  -->
+        <DESCRIPTION_SHORT>TurboWave</DESCRIPTION_SHORT>
+        <!-- Display the first fifty characters of the current 'article' within the 'DESCRIPTION_LONG' tags. -->
+        <DESCRIPTION_LONG>Experience powerful performance with this cutting-</DESCRIPTION_LONG>
+        <EAN>98957958</EAN>
+        <MANUFACTURER_AID>VT7M2X6</MANUFACTURER_AID>
+        <MANUFACTURER_NAME>VelocityIndustries</MANUFACTURER_NAME>
+        <DELIVERY_TIME>2</DELIVERY_TIME>
+        <!-- Begin iterating over each 'keyword' in the current 'article's 'KEYWORDS' attribute.
+                The 'KEYWORDS' attribute is a comma-separated string, which is split into individual keywords for the loop. -->
+        <KEYWORD>powerful</KEYWORD>
+        <KEYWORD>cutting-edge</KEYWORD>
+        <KEYWORD>advanced</KEYWORD>
+      </ARTICLE_DETAILS>
+      <ARTICLE_FEATURES>
+        <REFERENCE_FEATURE_SYSTEM_NAME>ECLASS-4.1
+                </REFERENCE_FEATURE_SYSTEM_NAME>
+        <REFERENCE_FEATURE_GROUP_ID>33-33-33-33</REFERENCE_FEATURE_GROUP_ID>
+      </ARTICLE_FEATURES>
+      <ARTICLE_ORDER_DETAILS>
+        <ORDER_UNIT>C62</ORDER_UNIT>
+        <CONTENT_UNIT>C62</CONTENT_UNIT>
+        <!-- Apply the 'int' filter to the current 'article', converting the value to an integer.  -->
+        <NO_CU_PER_OU>0</NO_CU_PER_OU>
+        <PRICE_QUANTITY>1</PRICE_QUANTITY>
+        <QUANTITY_MIN>5</QUANTITY_MIN>
+        <QUANTITY_INTERVAL>5</QUANTITY_INTERVAL>
+      </ARTICLE_ORDER_DETAILS>
+      <ARTICLE_PRICE_DETAILS>
+        <DATETIME type="valid_start_date">
+          <DATE>2022-01-01</DATE>
+        </DATETIME>
+        <DATETIME type="valid_end_date">
+          <DATE>2025-01-01</DATE>
+        </DATETIME>
+        <ARTICLE_PRICE price_type="net_customer">
+          <!-- Apply the 'float' filter to the current 'article', converting the value to a float value.  -->
+          <PRICE_AMOUNT>0.0</PRICE_AMOUNT>
+          <PRICE_CURRENCY>EUR</PRICE_CURRENCY>
+          <TAX>20</TAX>
+        </ARTICLE_PRICE>
+      </ARTICLE_PRICE_DETAILS>
+      <MIME_INFO>
+        <MIME>
+          <MIME_TYPE>image/jpeg</MIME_TYPE>
+          <MIME_SOURCE>36195416.png</MIME_SOURCE>
+          <MIME_DESCR>Powerful Tech</MIME_DESCR>
+          <MIME_PURPOSE>normal</MIME_PURPOSE>
+          <MIME_ORDER>1</MIME_ORDER>
+        </MIME>
+      </MIME_INFO>
+    </ARTICLE>
+    <ARTICLE>
+      <SUPPLIER_AID>24371910</SUPPLIER_AID>
+      <ARTICLE_DETAILS>
+        <!-- Apply the custom 'remove_accents' filter to remove all accent marks from the current article  -->
+        <DESCRIPTION_SHORT>NovaShade</DESCRIPTION_SHORT>
+        <!-- Display the first fifty characters of the current 'article' within the 'DESCRIPTION_LONG' tags. -->
+        <DESCRIPTION_LONG>Find modern shade solutions that combine style and</DESCRIPTION_LONG>
+        <EAN>97439504</EAN>
+        <MANUFACTURER_AID>SD8KP3R</MANUFACTURER_AID>
+        <MANUFACTURER_NAME>ShadeMasters</MANUFACTURER_NAME>
+        <DELIVERY_TIME>2</DELIVERY_TIME>
+        <!-- Begin iterating over each 'keyword' in the current 'article's 'KEYWORDS' attribute.
+                The 'KEYWORDS' attribute is a comma-separated string, which is split into individual keywords for the loop. -->
+        <KEYWORD>modern</KEYWORD>
+        <KEYWORD>shade</KEYWORD>
+        <KEYWORD>stylish</KEYWORD>
+        <KEYWORD>functional</KEYWORD>
+      </ARTICLE_DETAILS>
+      <ARTICLE_FEATURES>
+        <REFERENCE_FEATURE_SYSTEM_NAME>ECLASS-4.1
+                </REFERENCE_FEATURE_SYSTEM_NAME>
+        <REFERENCE_FEATURE_GROUP_ID>44-44-44-44</REFERENCE_FEATURE_GROUP_ID>
+      </ARTICLE_FEATURES>
+      <ARTICLE_ORDER_DETAILS>
+        <ORDER_UNIT>C62</ORDER_UNIT>
+        <CONTENT_UNIT>C62</CONTENT_UNIT>
+        <!-- Apply the 'int' filter to the current 'article', converting the value to an integer.  -->
+        <NO_CU_PER_OU>0</NO_CU_PER_OU>
+        <PRICE_QUANTITY>1</PRICE_QUANTITY>
+        <QUANTITY_MIN>1</QUANTITY_MIN>
+        <QUANTITY_INTERVAL>1</QUANTITY_INTERVAL>
+      </ARTICLE_ORDER_DETAILS>
+      <ARTICLE_PRICE_DETAILS>
+        <DATETIME type="valid_start_date">
+          <DATE>2022-01-01</DATE>
+        </DATETIME>
+        <DATETIME type="valid_end_date">
+          <DATE>2025-01-01</DATE>
+        </DATETIME>
+        <ARTICLE_PRICE price_type="net_customer">
+          <!-- Apply the 'float' filter to the current 'article', converting the value to a float value.  -->
+          <PRICE_AMOUNT>0.0</PRICE_AMOUNT>
+          <PRICE_CURRENCY>EUR</PRICE_CURRENCY>
+          <TAX>20</TAX>
+        </ARTICLE_PRICE>
+      </ARTICLE_PRICE_DETAILS>
+      <MIME_INFO>
+        <MIME>
+          <MIME_TYPE>image/jpeg</MIME_TYPE>
+          <MIME_SOURCE>24371910.png</MIME_SOURCE>
+          <MIME_DESCR>Modern Shade</MIME_DESCR>
+          <MIME_PURPOSE>normal</MIME_PURPOSE>
+          <MIME_ORDER>1</MIME_ORDER>
+        </MIME>
+      </MIME_INFO>
+    </ARTICLE>
+    <ARTICLE>
+      <SUPPLIER_AID>92349971</SUPPLIER_AID>
+      <ARTICLE_DETAILS>
+        <!-- Apply the custom 'remove_accents' filter to remove all accent marks from the current article  -->
+        <DESCRIPTION_SHORT>SparkleFresh</DESCRIPTION_SHORT>
+        <!-- Display the first fifty characters of the current 'article' within the 'DESCRIPTION_LONG' tags. -->
+        <DESCRIPTION_LONG>Refreshingly brighten your day with this invigorat</DESCRIPTION_LONG>
+        <EAN>95220753</EAN>
+        <MANUFACTURER_AID>SP2C9L5</MANUFACTURER_AID>
+        <MANUFACTURER_NAME>SparkleCo</MANUFACTURER_NAME>
+        <DELIVERY_TIME>2</DELIVERY_TIME>
+        <!-- Begin iterating over each 'keyword' in the current 'article's 'KEYWORDS' attribute.
+                The 'KEYWORDS' attribute is a comma-separated string, which is split into individual keywords for the loop. -->
+        <KEYWORD>refreshing</KEYWORD>
+        <KEYWORD>bright</KEYWORD>
+        <KEYWORD>invigorating</KEYWORD>
+      </ARTICLE_DETAILS>
+      <ARTICLE_FEATURES>
+        <REFERENCE_FEATURE_SYSTEM_NAME>ECLASS-4.1
+                </REFERENCE_FEATURE_SYSTEM_NAME>
+        <REFERENCE_FEATURE_GROUP_ID>55-55-55-55</REFERENCE_FEATURE_GROUP_ID>
+      </ARTICLE_FEATURES>
+      <ARTICLE_ORDER_DETAILS>
+        <ORDER_UNIT>PA</ORDER_UNIT>
+        <CONTENT_UNIT>RO</CONTENT_UNIT>
+        <!-- Apply the 'int' filter to the current 'article', converting the value to an integer.  -->
+        <NO_CU_PER_OU>4</NO_CU_PER_OU>
+        <PRICE_QUANTITY>1</PRICE_QUANTITY>
+        <QUANTITY_MIN>1</QUANTITY_MIN>
+        <QUANTITY_INTERVAL>1</QUANTITY_INTERVAL>
+      </ARTICLE_ORDER_DETAILS>
+      <ARTICLE_PRICE_DETAILS>
+        <DATETIME type="valid_start_date">
+          <DATE>2022-01-01</DATE>
+        </DATETIME>
+        <DATETIME type="valid_end_date">
+          <DATE>2025-01-01</DATE>
+        </DATETIME>
+        <ARTICLE_PRICE price_type="net_customer">
+          <!-- Apply the 'float' filter to the current 'article', converting the value to a float value.  -->
+          <PRICE_AMOUNT>0.0</PRICE_AMOUNT>
+          <PRICE_CURRENCY>EUR</PRICE_CURRENCY>
+          <TAX>20</TAX>
+        </ARTICLE_PRICE>
+      </ARTICLE_PRICE_DETAILS>
+      <MIME_INFO>
+        <MIME>
+          <MIME_TYPE>image/jpeg</MIME_TYPE>
+          <MIME_SOURCE>92349971.png</MIME_SOURCE>
+          <MIME_DESCR>Refreshing</MIME_DESCR>
+          <MIME_PURPOSE>normal</MIME_PURPOSE>
+          <MIME_ORDER>1</MIME_ORDER>
+        </MIME>
+      </MIME_INFO>
+    </ARTICLE>
+    <ARTICLE>
+      <SUPPLIER_AID>36601378</SUPPLIER_AID>
+      <ARTICLE_DETAILS>
+        <!-- Apply the custom 'remove_accents' filter to remove all accent marks from the current article  -->
+        <DESCRIPTION_SHORT>SwiftMist</DESCRIPTION_SHORT>
+        <!-- Display the first fifty characters of the current 'article' within the 'DESCRIPTION_LONG' tags. -->
+        <DESCRIPTION_LONG>Get instant refreshment with this quick and revita</DESCRIPTION_LONG>
+        <EAN>99704800</EAN>
+        <MANUFACTURER_AID>RM4F9G2</MANUFACTURER_AID>
+        <MANUFACTURER_NAME>RefreshMist</MANUFACTURER_NAME>
+        <DELIVERY_TIME>2</DELIVERY_TIME>
+        <!-- Begin iterating over each 'keyword' in the current 'article's 'KEYWORDS' attribute.
+                The 'KEYWORDS' attribute is a comma-separated string, which is split into individual keywords for the loop. -->
+        <KEYWORD>quick</KEYWORD>
+        <KEYWORD>revitalizing</KEYWORD>
+        <KEYWORD>refreshing</KEYWORD>
+      </ARTICLE_DETAILS>
+      <ARTICLE_FEATURES>
+        <REFERENCE_FEATURE_SYSTEM_NAME>ECLASS-4.1
+                </REFERENCE_FEATURE_SYSTEM_NAME>
+        <REFERENCE_FEATURE_GROUP_ID>66-66-66-66</REFERENCE_FEATURE_GROUP_ID>
+      </ARTICLE_FEATURES>
+      <ARTICLE_ORDER_DETAILS>
+        <ORDER_UNIT>PA</ORDER_UNIT>
+        <CONTENT_UNIT>C62</CONTENT_UNIT>
+        <!-- Apply the 'int' filter to the current 'article', converting the value to an integer.  -->
+        <NO_CU_PER_OU>3</NO_CU_PER_OU>
+        <PRICE_QUANTITY>1</PRICE_QUANTITY>
+        <QUANTITY_MIN>5</QUANTITY_MIN>
+        <QUANTITY_INTERVAL>5</QUANTITY_INTERVAL>
+      </ARTICLE_ORDER_DETAILS>
+      <ARTICLE_PRICE_DETAILS>
+        <DATETIME type="valid_start_date">
+          <DATE>2022-01-01</DATE>
+        </DATETIME>
+        <DATETIME type="valid_end_date">
+          <DATE>2025-01-01</DATE>
+        </DATETIME>
+        <ARTICLE_PRICE price_type="net_customer">
+          <!-- Apply the 'float' filter to the current 'article', converting the value to a float value.  -->
+          <PRICE_AMOUNT>0.0</PRICE_AMOUNT>
+          <PRICE_CURRENCY>EUR</PRICE_CURRENCY>
+          <TAX>20</TAX>
+        </ARTICLE_PRICE>
+      </ARTICLE_PRICE_DETAILS>
+      <MIME_INFO>
+        <MIME>
+          <MIME_TYPE>image/jpeg</MIME_TYPE>
+          <MIME_SOURCE>36601378.png</MIME_SOURCE>
+          <MIME_DESCR>Quick Mist</MIME_DESCR>
+          <MIME_PURPOSE>normal</MIME_PURPOSE>
+          <MIME_ORDER>1</MIME_ORDER>
+        </MIME>
+      </MIME_INFO>
+    </ARTICLE>
+    <ARTICLE>
+      <SUPPLIER_AID>60898852</SUPPLIER_AID>
+      <ARTICLE_DETAILS>
+        <!-- Apply the custom 'remove_accents' filter to remove all accent marks from the current article  -->
+        <DESCRIPTION_SHORT>LunaPulse</DESCRIPTION_SHORT>
+        <!-- Display the first fifty characters of the current 'article' within the 'DESCRIPTION_LONG' tags. -->
+        <DESCRIPTION_LONG>Illuminate your space with this energy-efficient l</DESCRIPTION_LONG>
+        <EAN>92834352</EAN>
+        <MANUFACTURER_AID>LX5V1N9</MANUFACTURER_AID>
+        <MANUFACTURER_NAME>LuminexLights</MANUFACTURER_NAME>
+        <DELIVERY_TIME>2</DELIVERY_TIME>
+        <!-- Begin iterating over each 'keyword' in the current 'article's 'KEYWORDS' attribute.
+                The 'KEYWORDS' attribute is a comma-separated string, which is split into individual keywords for the loop. -->
+        <KEYWORD>illuminate</KEYWORD>
+        <KEYWORD>energy-efficient</KEYWORD>
+      </ARTICLE_DETAILS>
+      <ARTICLE_FEATURES>
+        <REFERENCE_FEATURE_SYSTEM_NAME>ECLASS-4.1
+                </REFERENCE_FEATURE_SYSTEM_NAME>
+        <REFERENCE_FEATURE_GROUP_ID>77-77-77-77</REFERENCE_FEATURE_GROUP_ID>
+      </ARTICLE_FEATURES>
+      <ARTICLE_ORDER_DETAILS>
+        <ORDER_UNIT>PR</ORDER_UNIT>
+        <CONTENT_UNIT>C62</CONTENT_UNIT>
+        <!-- Apply the 'int' filter to the current 'article', converting the value to an integer.  -->
+        <NO_CU_PER_OU>2</NO_CU_PER_OU>
+        <PRICE_QUANTITY>1</PRICE_QUANTITY>
+        <QUANTITY_MIN>1</QUANTITY_MIN>
+        <QUANTITY_INTERVAL>1</QUANTITY_INTERVAL>
+      </ARTICLE_ORDER_DETAILS>
+      <ARTICLE_PRICE_DETAILS>
+        <DATETIME type="valid_start_date">
+          <DATE>2022-01-01</DATE>
+        </DATETIME>
+        <DATETIME type="valid_end_date">
+          <DATE>2025-01-01</DATE>
+        </DATETIME>
+        <ARTICLE_PRICE price_type="net_customer">
+          <!-- Apply the 'float' filter to the current 'article', converting the value to a float value.  -->
+          <PRICE_AMOUNT>0.0</PRICE_AMOUNT>
+          <PRICE_CURRENCY>EUR</PRICE_CURRENCY>
+          <TAX>20</TAX>
+        </ARTICLE_PRICE>
+      </ARTICLE_PRICE_DETAILS>
+      <MIME_INFO>
+        <MIME>
+          <MIME_TYPE>image/jpeg</MIME_TYPE>
+          <MIME_SOURCE>60898852.png</MIME_SOURCE>
+          <MIME_DESCR>Efficient Light</MIME_DESCR>
+          <MIME_PURPOSE>normal</MIME_PURPOSE>
+          <MIME_ORDER>1</MIME_ORDER>
+        </MIME>
+      </MIME_INFO>
+    </ARTICLE>
+    <ARTICLE>
+      <SUPPLIER_AID>46754022</SUPPLIER_AID>
+      <ARTICLE_DETAILS>
+        <!-- Apply the custom 'remove_accents' filter to remove all accent marks from the current article  -->
+        <DESCRIPTION_SHORT>SolarBurst</DESCRIPTION_SHORT>
+        <!-- Display the first fifty characters of the current 'article' within the 'DESCRIPTION_LONG' tags. -->
+        <DESCRIPTION_LONG>Harness the brilliance of the sun with this solar-</DESCRIPTION_LONG>
+        <EAN>94878533</EAN>
+        <MANUFACTURER_AID>SL6T9C3</MANUFACTURER_AID>
+        <MANUFACTURER_NAME>SolarTech</MANUFACTURER_NAME>
+        <DELIVERY_TIME>2</DELIVERY_TIME>
+        <!-- Begin iterating over each 'keyword' in the current 'article's 'KEYWORDS' attribute.
+                The 'KEYWORDS' attribute is a comma-separated string, which is split into individual keywords for the loop. -->
+        <KEYWORD>solar-powered</KEYWORD>
+        <KEYWORD>brilliant</KEYWORD>
+      </ARTICLE_DETAILS>
+      <ARTICLE_FEATURES>
+        <REFERENCE_FEATURE_SYSTEM_NAME>ECLASS-4.1
+                </REFERENCE_FEATURE_SYSTEM_NAME>
+        <REFERENCE_FEATURE_GROUP_ID>77-77-77-77</REFERENCE_FEATURE_GROUP_ID>
+      </ARTICLE_FEATURES>
+      <ARTICLE_ORDER_DETAILS>
+        <ORDER_UNIT>PR</ORDER_UNIT>
+        <CONTENT_UNIT>C62</CONTENT_UNIT>
+        <!-- Apply the 'int' filter to the current 'article', converting the value to an integer.  -->
+        <NO_CU_PER_OU>2</NO_CU_PER_OU>
+        <PRICE_QUANTITY>1</PRICE_QUANTITY>
+        <QUANTITY_MIN>1</QUANTITY_MIN>
+        <QUANTITY_INTERVAL>1</QUANTITY_INTERVAL>
+      </ARTICLE_ORDER_DETAILS>
+      <ARTICLE_PRICE_DETAILS>
+        <DATETIME type="valid_start_date">
+          <DATE>2022-01-01</DATE>
+        </DATETIME>
+        <DATETIME type="valid_end_date">
+          <DATE>2025-01-01</DATE>
+        </DATETIME>
+        <ARTICLE_PRICE price_type="net_customer">
+          <!-- Apply the 'float' filter to the current 'article', converting the value to a float value.  -->
+          <PRICE_AMOUNT>0.0</PRICE_AMOUNT>
+          <PRICE_CURRENCY>EUR</PRICE_CURRENCY>
+          <TAX>20</TAX>
+        </ARTICLE_PRICE>
+      </ARTICLE_PRICE_DETAILS>
+      <MIME_INFO>
+        <MIME>
+          <MIME_TYPE>image/jpeg</MIME_TYPE>
+          <MIME_SOURCE>46754022.png</MIME_SOURCE>
+          <MIME_DESCR>Solar Burst</MIME_DESCR>
+          <MIME_PURPOSE>normal</MIME_PURPOSE>
+          <MIME_ORDER>1</MIME_ORDER>
+        </MIME>
+      </MIME_INFO>
+    </ARTICLE>
+    <ARTICLE>
+      <SUPPLIER_AID>29692857</SUPPLIER_AID>
+      <ARTICLE_DETAILS>
+        <!-- Apply the custom 'remove_accents' filter to remove all accent marks from the current article  -->
+        <DESCRIPTION_SHORT>PowerLuxe</DESCRIPTION_SHORT>
+        <!-- Display the first fifty characters of the current 'article' within the 'DESCRIPTION_LONG' tags. -->
+        <DESCRIPTION_LONG>Indulge in ultimate power and luxury with this hig</DESCRIPTION_LONG>
+        <EAN>98573571</EAN>
+        <MANUFACTURER_AID>EL9P7X4</MANUFACTURER_AID>
+        <MANUFACTURER_NAME>EliteLux</MANUFACTURER_NAME>
+        <DELIVERY_TIME>2</DELIVERY_TIME>
+        <!-- Begin iterating over each 'keyword' in the current 'article's 'KEYWORDS' attribute.
+                The 'KEYWORDS' attribute is a comma-separated string, which is split into individual keywords for the loop. -->
+        <KEYWORD>luxury</KEYWORD>
+        <KEYWORD>high-end</KEYWORD>
+        <KEYWORD>ultimate</KEYWORD>
+      </ARTICLE_DETAILS>
+      <ARTICLE_FEATURES>
+        <REFERENCE_FEATURE_SYSTEM_NAME>ECLASS-4.1
+                </REFERENCE_FEATURE_SYSTEM_NAME>
+        <REFERENCE_FEATURE_GROUP_ID>77-77-77-77</REFERENCE_FEATURE_GROUP_ID>
+      </ARTICLE_FEATURES>
+      <ARTICLE_ORDER_DETAILS>
+        <ORDER_UNIT>PR</ORDER_UNIT>
+        <CONTENT_UNIT>C62</CONTENT_UNIT>
+        <!-- Apply the 'int' filter to the current 'article', converting the value to an integer.  -->
+        <NO_CU_PER_OU>2</NO_CU_PER_OU>
+        <PRICE_QUANTITY>1</PRICE_QUANTITY>
+        <QUANTITY_MIN>1</QUANTITY_MIN>
+        <QUANTITY_INTERVAL>1</QUANTITY_INTERVAL>
+      </ARTICLE_ORDER_DETAILS>
+      <ARTICLE_PRICE_DETAILS>
+        <DATETIME type="valid_start_date">
+          <DATE>2022-01-01</DATE>
+        </DATETIME>
+        <DATETIME type="valid_end_date">
+          <DATE>2025-01-01</DATE>
+        </DATETIME>
+        <ARTICLE_PRICE price_type="net_customer">
+          <!-- Apply the 'float' filter to the current 'article', converting the value to a float value.  -->
+          <PRICE_AMOUNT>0.0</PRICE_AMOUNT>
+          <PRICE_CURRENCY>EUR</PRICE_CURRENCY>
+          <TAX>10</TAX>
+        </ARTICLE_PRICE>
+      </ARTICLE_PRICE_DETAILS>
+      <MIME_INFO>
+        <MIME>
+          <MIME_TYPE>image/jpeg</MIME_TYPE>
+          <MIME_SOURCE>29692857.png</MIME_SOURCE>
+          <MIME_DESCR>Luxury Power</MIME_DESCR>
+          <MIME_PURPOSE>normal</MIME_PURPOSE>
+          <MIME_ORDER>1</MIME_ORDER>
+        </MIME>
+      </MIME_INFO>
+    </ARTICLE>
+    <ARTICLE>
+      <SUPPLIER_AID>85757944</SUPPLIER_AID>
+      <ARTICLE_DETAILS>
+        <!-- Apply the custom 'remove_accents' filter to remove all accent marks from the current article  -->
+        <DESCRIPTION_SHORT>AquaGlide</DESCRIPTION_SHORT>
+        <!-- Display the first fifty characters of the current 'article' within the 'DESCRIPTION_LONG' tags. -->
+        <DESCRIPTION_LONG>Experience the smoothest water adventure with this</DESCRIPTION_LONG>
+        <EAN>91418470</EAN>
+        <MANUFACTURER_AID>AG3C6B9</MANUFACTURER_AID>
+        <MANUFACTURER_NAME>AquaGlideCorp</MANUFACTURER_NAME>
+        <DELIVERY_TIME>2</DELIVERY_TIME>
+        <!-- Begin iterating over each 'keyword' in the current 'article's 'KEYWORDS' attribute.
+                The 'KEYWORDS' attribute is a comma-separated string, which is split into individual keywords for the loop. -->
+        <KEYWORD>smooth</KEYWORD>
+        <KEYWORD>water</KEYWORD>
+        <KEYWORD>adventure</KEYWORD>
+      </ARTICLE_DETAILS>
+      <ARTICLE_FEATURES>
+        <REFERENCE_FEATURE_SYSTEM_NAME>ECLASS-4.1
+                </REFERENCE_FEATURE_SYSTEM_NAME>
+        <REFERENCE_FEATURE_GROUP_ID>77-77-77-77</REFERENCE_FEATURE_GROUP_ID>
+      </ARTICLE_FEATURES>
+      <ARTICLE_ORDER_DETAILS>
+        <ORDER_UNIT>PR</ORDER_UNIT>
+        <CONTENT_UNIT>C62</CONTENT_UNIT>
+        <!-- Apply the 'int' filter to the current 'article', converting the value to an integer.  -->
+        <NO_CU_PER_OU>2</NO_CU_PER_OU>
+        <PRICE_QUANTITY>1</PRICE_QUANTITY>
+        <QUANTITY_MIN>1</QUANTITY_MIN>
+        <QUANTITY_INTERVAL>1</QUANTITY_INTERVAL>
+      </ARTICLE_ORDER_DETAILS>
+      <ARTICLE_PRICE_DETAILS>
+        <DATETIME type="valid_start_date">
+          <DATE>2022-01-01</DATE>
+        </DATETIME>
+        <DATETIME type="valid_end_date">
+          <DATE>2025-01-01</DATE>
+        </DATETIME>
+        <ARTICLE_PRICE price_type="net_customer">
+          <!-- Apply the 'float' filter to the current 'article', converting the value to a float value.  -->
+          <PRICE_AMOUNT>0.0</PRICE_AMOUNT>
+          <PRICE_CURRENCY>EUR</PRICE_CURRENCY>
+          <TAX>20</TAX>
+        </ARTICLE_PRICE>
+      </ARTICLE_PRICE_DETAILS>
+      <MIME_INFO>
+        <MIME>
+          <MIME_TYPE>image/jpeg</MIME_TYPE>
+          <MIME_SOURCE>85757944.png</MIME_SOURCE>
+          <MIME_DESCR>Smooth Adventure</MIME_DESCR>
+          <MIME_PURPOSE>normal</MIME_PURPOSE>
+          <MIME_ORDER>1</MIME_ORDER>
+        </MIME>
+      </MIME_INFO>
+    </ARTICLE>
+    <ARTICLE>
+      <SUPPLIER_AID>82068117</SUPPLIER_AID>
+      <ARTICLE_DETAILS>
+        <!-- Apply the custom 'remove_accents' filter to remove all accent marks from the current article  -->
+        <DESCRIPTION_SHORT>ThunderBolt</DESCRIPTION_SHORT>
+        <!-- Display the first fifty characters of the current 'article' within the 'DESCRIPTION_LONG' tags. -->
+        <DESCRIPTION_LONG>Unleash electrifying speed and performance with th</DESCRIPTION_LONG>
+        <EAN>93284892</EAN>
+        <MANUFACTURER_AID>TH5B6R8</MANUFACTURER_AID>
+        <MANUFACTURER_NAME>ThunderTech</MANUFACTURER_NAME>
+        <DELIVERY_TIME>2</DELIVERY_TIME>
+        <!-- Begin iterating over each 'keyword' in the current 'article's 'KEYWORDS' attribute.
+                The 'KEYWORDS' attribute is a comma-separated string, which is split into individual keywords for the loop. -->
+        <KEYWORD>electrifying</KEYWORD>
+        <KEYWORD>speed</KEYWORD>
+        <KEYWORD>performance</KEYWORD>
+      </ARTICLE_DETAILS>
+      <ARTICLE_FEATURES>
+        <REFERENCE_FEATURE_SYSTEM_NAME>ECLASS-4.1
+                </REFERENCE_FEATURE_SYSTEM_NAME>
+        <REFERENCE_FEATURE_GROUP_ID>77-77-77-77</REFERENCE_FEATURE_GROUP_ID>
+      </ARTICLE_FEATURES>
+      <ARTICLE_ORDER_DETAILS>
+        <ORDER_UNIT>PR</ORDER_UNIT>
+        <CONTENT_UNIT>C62</CONTENT_UNIT>
+        <!-- Apply the 'int' filter to the current 'article', converting the value to an integer.  -->
+        <NO_CU_PER_OU>2</NO_CU_PER_OU>
+        <PRICE_QUANTITY>1</PRICE_QUANTITY>
+        <QUANTITY_MIN>1</QUANTITY_MIN>
+        <QUANTITY_INTERVAL>1</QUANTITY_INTERVAL>
+      </ARTICLE_ORDER_DETAILS>
+      <ARTICLE_PRICE_DETAILS>
+        <DATETIME type="valid_start_date">
+          <DATE>2022-01-01</DATE>
+        </DATETIME>
+        <DATETIME type="valid_end_date">
+          <DATE>2025-01-01</DATE>
+        </DATETIME>
+        <ARTICLE_PRICE price_type="net_customer">
+          <!-- Apply the 'float' filter to the current 'article', converting the value to a float value.  -->
+          <PRICE_AMOUNT>0.0</PRICE_AMOUNT>
+          <PRICE_CURRENCY>EUR</PRICE_CURRENCY>
+          <TAX>20</TAX>
+        </ARTICLE_PRICE>
+      </ARTICLE_PRICE_DETAILS>
+      <MIME_INFO>
+        <MIME>
+          <MIME_TYPE>image/jpeg</MIME_TYPE>
+          <MIME_SOURCE>82068117.png</MIME_SOURCE>
+          <MIME_DESCR>Electrifying Speed</MIME_DESCR>
+          <MIME_PURPOSE>normal</MIME_PURPOSE>
+          <MIME_ORDER>1</MIME_ORDER>
+        </MIME>
+      </MIME_INFO>
+    </ARTICLE>
+    <ARTICLE>
+      <SUPPLIER_AID>20503603</SUPPLIER_AID>
+      <ARTICLE_DETAILS>
+        <!-- Apply the custom 'remove_accents' filter to remove all accent marks from the current article  -->
+        <DESCRIPTION_SHORT>CrystalGlow</DESCRIPTION_SHORT>
+        <!-- Display the first fifty characters of the current 'article' within the 'DESCRIPTION_LONG' tags. -->
+        <DESCRIPTION_LONG>Enhance your natural glow with this crystal clear </DESCRIPTION_LONG>
+        <EAN>96569556</EAN>
+        <MANUFACTURER_AID>CC8R5N2</MANUFACTURER_AID>
+        <MANUFACTURER_NAME>CrystalClear</MANUFACTURER_NAME>
+        <DELIVERY_TIME>2</DELIVERY_TIME>
+        <!-- Begin iterating over each 'keyword' in the current 'article's 'KEYWORDS' attribute.
+                The 'KEYWORDS' attribute is a comma-separated string, which is split into individual keywords for the loop. -->
+        <KEYWORD>enhance</KEYWORD>
+        <KEYWORD>glow</KEYWORD>
+        <KEYWORD>skincare</KEYWORD>
+      </ARTICLE_DETAILS>
+      <ARTICLE_FEATURES>
+        <REFERENCE_FEATURE_SYSTEM_NAME>ECLASS-4.1
+                </REFERENCE_FEATURE_SYSTEM_NAME>
+        <REFERENCE_FEATURE_GROUP_ID>77-77-77-77</REFERENCE_FEATURE_GROUP_ID>
+      </ARTICLE_FEATURES>
+      <ARTICLE_ORDER_DETAILS>
+        <ORDER_UNIT>PR</ORDER_UNIT>
+        <CONTENT_UNIT>C62</CONTENT_UNIT>
+        <!-- Apply the 'int' filter to the current 'article', converting the value to an integer.  -->
+        <NO_CU_PER_OU>2</NO_CU_PER_OU>
+        <PRICE_QUANTITY>1</PRICE_QUANTITY>
+        <QUANTITY_MIN>1</QUANTITY_MIN>
+        <QUANTITY_INTERVAL>1</QUANTITY_INTERVAL>
+      </ARTICLE_ORDER_DETAILS>
+      <ARTICLE_PRICE_DETAILS>
+        <DATETIME type="valid_start_date">
+          <DATE>2022-01-01</DATE>
+        </DATETIME>
+        <DATETIME type="valid_end_date">
+          <DATE>2025-01-01</DATE>
+        </DATETIME>
+        <ARTICLE_PRICE price_type="net_customer">
+          <!-- Apply the 'float' filter to the current 'article', converting the value to a float value.  -->
+          <PRICE_AMOUNT>0.0</PRICE_AMOUNT>
+          <PRICE_CURRENCY>EUR</PRICE_CURRENCY>
+          <TAX>20</TAX>
+        </ARTICLE_PRICE>
+      </ARTICLE_PRICE_DETAILS>
+      <MIME_INFO>
+        <MIME>
+          <MIME_TYPE>image/jpeg</MIME_TYPE>
+          <MIME_SOURCE>20503603.png</MIME_SOURCE>
+          <MIME_DESCR>Enhanced Glow</MIME_DESCR>
+          <MIME_PURPOSE>normal</MIME_PURPOSE>
+          <MIME_ORDER>1</MIME_ORDER>
+        </MIME>
+      </MIME_INFO>
+    </ARTICLE>
+    <ARTICLE>
+      <SUPPLIER_AID>14690165</SUPPLIER_AID>
+      <ARTICLE_DETAILS>
+        <!-- Apply the custom 'remove_accents' filter to remove all accent marks from the current article  -->
+        <DESCRIPTION_SHORT>ElectroMist</DESCRIPTION_SHORT>
+        <!-- Display the first fifty characters of the current 'article' within the 'DESCRIPTION_LONG' tags. -->
+        <DESCRIPTION_LONG>Invigorate your senses with this electrifying and </DESCRIPTION_LONG>
+        <EAN>98291478</EAN>
+        <MANUFACTURER_AID>EM2K9N5</MANUFACTURER_AID>
+        <MANUFACTURER_NAME>ElectraMist</MANUFACTURER_NAME>
+        <DELIVERY_TIME>2</DELIVERY_TIME>
+        <!-- Begin iterating over each 'keyword' in the current 'article's 'KEYWORDS' attribute.
+                The 'KEYWORDS' attribute is a comma-separated string, which is split into individual keywords for the loop. -->
+        <KEYWORD>invigorate</KEYWORD>
+        <KEYWORD>refreshing</KEYWORD>
+        <KEYWORD>electrify</KEYWORD>
+      </ARTICLE_DETAILS>
+      <ARTICLE_FEATURES>
+        <REFERENCE_FEATURE_SYSTEM_NAME>ECLASS-4.1
+                </REFERENCE_FEATURE_SYSTEM_NAME>
+        <REFERENCE_FEATURE_GROUP_ID>77-77-77-77</REFERENCE_FEATURE_GROUP_ID>
+      </ARTICLE_FEATURES>
+      <ARTICLE_ORDER_DETAILS>
+        <ORDER_UNIT>PR</ORDER_UNIT>
+        <CONTENT_UNIT>C62</CONTENT_UNIT>
+        <!-- Apply the 'int' filter to the current 'article', converting the value to an integer.  -->
+        <NO_CU_PER_OU>2</NO_CU_PER_OU>
+        <PRICE_QUANTITY>1</PRICE_QUANTITY>
+        <QUANTITY_MIN>1</QUANTITY_MIN>
+        <QUANTITY_INTERVAL>1</QUANTITY_INTERVAL>
+      </ARTICLE_ORDER_DETAILS>
+      <ARTICLE_PRICE_DETAILS>
+        <DATETIME type="valid_start_date">
+          <DATE>2022-01-01</DATE>
+        </DATETIME>
+        <DATETIME type="valid_end_date">
+          <DATE>2025-01-01</DATE>
+        </DATETIME>
+        <ARTICLE_PRICE price_type="net_customer">
+          <!-- Apply the 'float' filter to the current 'article', converting the value to a float value.  -->
+          <PRICE_AMOUNT>0.0</PRICE_AMOUNT>
+          <PRICE_CURRENCY>EUR</PRICE_CURRENCY>
+          <TAX>20</TAX>
+        </ARTICLE_PRICE>
+      </ARTICLE_PRICE_DETAILS>
+      <MIME_INFO>
+        <MIME>
+          <MIME_TYPE>image/jpeg</MIME_TYPE>
+          <MIME_SOURCE>14690165.png</MIME_SOURCE>
+          <MIME_DESCR>Refreshing Mist</MIME_DESCR>
+          <MIME_PURPOSE>normal</MIME_PURPOSE>
+          <MIME_ORDER>1</MIME_ORDER>
+        </MIME>
+      </MIME_INFO>
+    </ARTICLE>
+    <ARTICLE>
+      <SUPPLIER_AID>34314045</SUPPLIER_AID>
+      <ARTICLE_DETAILS>
+        <!-- Apply the custom 'remove_accents' filter to remove all accent marks from the current article  -->
+        <DESCRIPTION_SHORT>SkyBlaze</DESCRIPTION_SHORT>
+        <!-- Display the first fifty characters of the current 'article' within the 'DESCRIPTION_LONG' tags. -->
+        <DESCRIPTION_LONG>Embark on a fiery sky adventure with this thrillin</DESCRIPTION_LONG>
+        <EAN>98906151</EAN>
+        <MANUFACTURER_AID>SF9G4R2</MANUFACTURER_AID>
+        <MANUFACTURER_NAME>SkyFire</MANUFACTURER_NAME>
+        <DELIVERY_TIME>2</DELIVERY_TIME>
+        <!-- Begin iterating over each 'keyword' in the current 'article's 'KEYWORDS' attribute.
+                The 'KEYWORDS' attribute is a comma-separated string, which is split into individual keywords for the loop. -->
+        <KEYWORD>fiery</KEYWORD>
+        <KEYWORD>adventure</KEYWORD>
+        <KEYWORD>thrilling</KEYWORD>
+      </ARTICLE_DETAILS>
+      <ARTICLE_FEATURES>
+        <REFERENCE_FEATURE_SYSTEM_NAME>ECLASS-4.1
+                </REFERENCE_FEATURE_SYSTEM_NAME>
+        <REFERENCE_FEATURE_GROUP_ID>77-77-77-77</REFERENCE_FEATURE_GROUP_ID>
+      </ARTICLE_FEATURES>
+      <ARTICLE_ORDER_DETAILS>
+        <ORDER_UNIT>PR</ORDER_UNIT>
+        <CONTENT_UNIT>C62</CONTENT_UNIT>
+        <!-- Apply the 'int' filter to the current 'article', converting the value to an integer.  -->
+        <NO_CU_PER_OU>2</NO_CU_PER_OU>
+        <PRICE_QUANTITY>1</PRICE_QUANTITY>
+        <QUANTITY_MIN>1</QUANTITY_MIN>
+        <QUANTITY_INTERVAL>1</QUANTITY_INTERVAL>
+      </ARTICLE_ORDER_DETAILS>
+      <ARTICLE_PRICE_DETAILS>
+        <DATETIME type="valid_start_date">
+          <DATE>2022-01-01</DATE>
+        </DATETIME>
+        <DATETIME type="valid_end_date">
+          <DATE>2025-01-01</DATE>
+        </DATETIME>
+        <ARTICLE_PRICE price_type="net_customer">
+          <!-- Apply the 'float' filter to the current 'article', converting the value to a float value.  -->
+          <PRICE_AMOUNT>0.0</PRICE_AMOUNT>
+          <PRICE_CURRENCY>EUR</PRICE_CURRENCY>
+          <TAX>20</TAX>
+        </ARTICLE_PRICE>
+      </ARTICLE_PRICE_DETAILS>
+      <MIME_INFO>
+        <MIME>
+          <MIME_TYPE>image/jpeg</MIME_TYPE>
+          <MIME_SOURCE>34314045.png</MIME_SOURCE>
+          <MIME_DESCR>Fiery Adventure</MIME_DESCR>
+          <MIME_PURPOSE>normal</MIME_PURPOSE>
+          <MIME_ORDER>1</MIME_ORDER>
+        </MIME>
+      </MIME_INFO>
+    </ARTICLE>
+    <ARTICLE>
+      <SUPPLIER_AID>24371516</SUPPLIER_AID>
+      <ARTICLE_DETAILS>
+        <!-- Apply the custom 'remove_accents' filter to remove all accent marks from the current article  -->
+        <DESCRIPTION_SHORT>UltraGlide</DESCRIPTION_SHORT>
+        <!-- Display the first fifty characters of the current 'article' within the 'DESCRIPTION_LONG' tags. -->
+        <DESCRIPTION_LONG>Effortlessly glide through your tasks with this hi</DESCRIPTION_LONG>
+        <EAN>92493589</EAN>
+        <MANUFACTURER_AID>PG7T2L4</MANUFACTURER_AID>
+        <MANUFACTURER_NAME>ProGlide</MANUFACTURER_NAME>
+        <DELIVERY_TIME>2</DELIVERY_TIME>
+        <!-- Begin iterating over each 'keyword' in the current 'article's 'KEYWORDS' attribute.
+                The 'KEYWORDS' attribute is a comma-separated string, which is split into individual keywords for the loop. -->
+        <KEYWORD>effortless</KEYWORD>
+        <KEYWORD>high-performance</KEYWORD>
+        <KEYWORD>glide</KEYWORD>
+      </ARTICLE_DETAILS>
+      <ARTICLE_FEATURES>
+        <REFERENCE_FEATURE_SYSTEM_NAME>ECLASS-4.1
+                </REFERENCE_FEATURE_SYSTEM_NAME>
+        <REFERENCE_FEATURE_GROUP_ID>77-77-77-77</REFERENCE_FEATURE_GROUP_ID>
+      </ARTICLE_FEATURES>
+      <ARTICLE_ORDER_DETAILS>
+        <ORDER_UNIT>PR</ORDER_UNIT>
+        <CONTENT_UNIT>C62</CONTENT_UNIT>
+        <!-- Apply the 'int' filter to the current 'article', converting the value to an integer.  -->
+        <NO_CU_PER_OU>2</NO_CU_PER_OU>
+        <PRICE_QUANTITY>1</PRICE_QUANTITY>
+        <QUANTITY_MIN>1</QUANTITY_MIN>
+        <QUANTITY_INTERVAL>1</QUANTITY_INTERVAL>
+      </ARTICLE_ORDER_DETAILS>
+      <ARTICLE_PRICE_DETAILS>
+        <DATETIME type="valid_start_date">
+          <DATE>2022-01-01</DATE>
+        </DATETIME>
+        <DATETIME type="valid_end_date">
+          <DATE>2025-01-01</DATE>
+        </DATETIME>
+        <ARTICLE_PRICE price_type="net_customer">
+          <!-- Apply the 'float' filter to the current 'article', converting the value to a float value.  -->
+          <PRICE_AMOUNT>0.0</PRICE_AMOUNT>
+          <PRICE_CURRENCY>EUR</PRICE_CURRENCY>
+          <TAX>20</TAX>
+        </ARTICLE_PRICE>
+      </ARTICLE_PRICE_DETAILS>
+      <MIME_INFO>
+        <MIME>
+          <MIME_TYPE>image/jpeg</MIME_TYPE>
+          <MIME_SOURCE>24371516.png</MIME_SOURCE>
+          <MIME_DESCR>Effortless Gli</MIME_DESCR>
+          <MIME_PURPOSE>normal</MIME_PURPOSE>
+          <MIME_ORDER>1</MIME_ORDER>
+        </MIME>
+      </MIME_INFO>
+    </ARTICLE>
+    <!-- Start iterating over each 'article' in the 'articles_csv' list.
+        For each iteration, 'article' will hold the current article's information. -->
+    <!-- For each 'article', split its 'CATALOG_GROUP_ID' attribute (which is a comma-separated string) into individual group IDs.
+        Then, start iterating over each 'group_id'. -->
+    <ARTICLE_TO_CATALOGGROUP_MAP>
+      <ART_ID>71459824</ART_ID>
+      <CATALOG_GROUP_ID>201</CATALOG_GROUP_ID>
+    </ARTICLE_TO_CATALOGGROUP_MAP>
+    <!-- For each 'article', split its 'CATALOG_GROUP_ID' attribute (which is a comma-separated string) into individual group IDs.
+        Then, start iterating over each 'group_id'. -->
+    <ARTICLE_TO_CATALOGGROUP_MAP>
+      <ART_ID>71193397</ART_ID>
+      <CATALOG_GROUP_ID>201</CATALOG_GROUP_ID>
+    </ARTICLE_TO_CATALOGGROUP_MAP>
+    <!-- For each 'article', split its 'CATALOG_GROUP_ID' attribute (which is a comma-separated string) into individual group IDs.
+        Then, start iterating over each 'group_id'. -->
+    <ARTICLE_TO_CATALOGGROUP_MAP>
+      <ART_ID>36195416</ART_ID>
+      <CATALOG_GROUP_ID>201</CATALOG_GROUP_ID>
+    </ARTICLE_TO_CATALOGGROUP_MAP>
+    <!-- For each 'article', split its 'CATALOG_GROUP_ID' attribute (which is a comma-separated string) into individual group IDs.
+        Then, start iterating over each 'group_id'. -->
+    <ARTICLE_TO_CATALOGGROUP_MAP>
+      <ART_ID>24371910</ART_ID>
+      <CATALOG_GROUP_ID>202</CATALOG_GROUP_ID>
+    </ARTICLE_TO_CATALOGGROUP_MAP>
+    <!-- For each 'article', split its 'CATALOG_GROUP_ID' attribute (which is a comma-separated string) into individual group IDs.
+        Then, start iterating over each 'group_id'. -->
+    <ARTICLE_TO_CATALOGGROUP_MAP>
+      <ART_ID>92349971</ART_ID>
+      <CATALOG_GROUP_ID>202</CATALOG_GROUP_ID>
+    </ARTICLE_TO_CATALOGGROUP_MAP>
+    <!-- For each 'article', split its 'CATALOG_GROUP_ID' attribute (which is a comma-separated string) into individual group IDs.
+        Then, start iterating over each 'group_id'. -->
+    <ARTICLE_TO_CATALOGGROUP_MAP>
+      <ART_ID>36601378</ART_ID>
+      <CATALOG_GROUP_ID>203</CATALOG_GROUP_ID>
+    </ARTICLE_TO_CATALOGGROUP_MAP>
+    <!-- For each 'article', split its 'CATALOG_GROUP_ID' attribute (which is a comma-separated string) into individual group IDs.
+        Then, start iterating over each 'group_id'. -->
+    <ARTICLE_TO_CATALOGGROUP_MAP>
+      <ART_ID>60898852</ART_ID>
+      <CATALOG_GROUP_ID>203</CATALOG_GROUP_ID>
+    </ARTICLE_TO_CATALOGGROUP_MAP>
+    <!-- For each 'article', split its 'CATALOG_GROUP_ID' attribute (which is a comma-separated string) into individual group IDs.
+        Then, start iterating over each 'group_id'. -->
+    <ARTICLE_TO_CATALOGGROUP_MAP>
+      <ART_ID>46754022</ART_ID>
+      <CATALOG_GROUP_ID>301</CATALOG_GROUP_ID>
+    </ARTICLE_TO_CATALOGGROUP_MAP>
+    <!-- For each 'article', split its 'CATALOG_GROUP_ID' attribute (which is a comma-separated string) into individual group IDs.
+        Then, start iterating over each 'group_id'. -->
+    <ARTICLE_TO_CATALOGGROUP_MAP>
+      <ART_ID>29692857</ART_ID>
+      <CATALOG_GROUP_ID>301</CATALOG_GROUP_ID>
+    </ARTICLE_TO_CATALOGGROUP_MAP>
+    <!-- For each 'article', split its 'CATALOG_GROUP_ID' attribute (which is a comma-separated string) into individual group IDs.
+        Then, start iterating over each 'group_id'. -->
+    <ARTICLE_TO_CATALOGGROUP_MAP>
+      <ART_ID>85757944</ART_ID>
+      <CATALOG_GROUP_ID>301</CATALOG_GROUP_ID>
+    </ARTICLE_TO_CATALOGGROUP_MAP>
+    <!-- For each 'article', split its 'CATALOG_GROUP_ID' attribute (which is a comma-separated string) into individual group IDs.
+        Then, start iterating over each 'group_id'. -->
+    <ARTICLE_TO_CATALOGGROUP_MAP>
+      <ART_ID>82068117</ART_ID>
+      <CATALOG_GROUP_ID>302</CATALOG_GROUP_ID>
+    </ARTICLE_TO_CATALOGGROUP_MAP>
+    <!-- For each 'article', split its 'CATALOG_GROUP_ID' attribute (which is a comma-separated string) into individual group IDs.
+        Then, start iterating over each 'group_id'. -->
+    <ARTICLE_TO_CATALOGGROUP_MAP>
+      <ART_ID>20503603</ART_ID>
+      <CATALOG_GROUP_ID>302</CATALOG_GROUP_ID>
+    </ARTICLE_TO_CATALOGGROUP_MAP>
+    <!-- For each 'article', split its 'CATALOG_GROUP_ID' attribute (which is a comma-separated string) into individual group IDs.
+        Then, start iterating over each 'group_id'. -->
+    <ARTICLE_TO_CATALOGGROUP_MAP>
+      <ART_ID>14690165</ART_ID>
+      <CATALOG_GROUP_ID>302</CATALOG_GROUP_ID>
+    </ARTICLE_TO_CATALOGGROUP_MAP>
+    <!-- For each 'article', split its 'CATALOG_GROUP_ID' attribute (which is a comma-separated string) into individual group IDs.
+        Then, start iterating over each 'group_id'. -->
+    <ARTICLE_TO_CATALOGGROUP_MAP>
+      <ART_ID>34314045</ART_ID>
+      <CATALOG_GROUP_ID>302</CATALOG_GROUP_ID>
+    </ARTICLE_TO_CATALOGGROUP_MAP>
+    <ARTICLE_TO_CATALOGGROUP_MAP>
+      <ART_ID>34314045</ART_ID>
+      <CATALOG_GROUP_ID>201201</CATALOG_GROUP_ID>
+    </ARTICLE_TO_CATALOGGROUP_MAP>
+    <!-- For each 'article', split its 'CATALOG_GROUP_ID' attribute (which is a comma-separated string) into individual group IDs.
+        Then, start iterating over each 'group_id'. -->
+    <ARTICLE_TO_CATALOGGROUP_MAP>
+      <ART_ID>24371516</ART_ID>
+      <CATALOG_GROUP_ID>303</CATALOG_GROUP_ID>
+    </ARTICLE_TO_CATALOGGROUP_MAP>
+    <ARTICLE_TO_CATALOGGROUP_MAP>
+      <ART_ID>24371516</ART_ID>
+      <CATALOG_GROUP_ID>302</CATALOG_GROUP_ID>
+    </ARTICLE_TO_CATALOGGROUP_MAP>
+    <ARTICLE_TO_CATALOGGROUP_MAP>
+      <ART_ID>24371516</ART_ID>
+      <CATALOG_GROUP_ID>605</CATALOG_GROUP_ID>
+    </ARTICLE_TO_CATALOGGROUP_MAP>
+  </T_NEW_CATALOG>
+</BMECAT>
