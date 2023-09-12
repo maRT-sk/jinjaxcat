@@ -68,8 +68,8 @@ def generate_output(input_files: list, template_file: io.BytesIO, key_mapping: d
 
                     # Check if the cell value starts with '{', indicating a Jinja2 template
                     if isinstance(cell.value, str) and cell.value.startswith('{'):
-
-                        template = environment.from_string(cell.value)  # Create a Jinja2 template from the cell value
+                        cell_value = cell.value.replace('}\n','}')  # Erase redundant newlines
+                        template = environment.from_string(cell_value)  # Create a Jinja2 template from the cell value
                         rendered_output = template.render(**data_dict)  # Render the template using the data dictionary
                         rendered_output = rendered_output.split('##')[0:-1]  # Split the rendered output by '##'
 
@@ -158,7 +158,12 @@ def create_environment() -> CustomEnvironment:
     :return: Custom Jinja2 environment object.
     """
     # Initialize a custom Jinja2 environment
-    environment = CustomEnvironment(loader=FileSystemLoader(''), autoescape=select_autoescape(["html", "htm", "xml"]))
+    environment = CustomEnvironment(
+        trim_blocks=True,
+        lstrip_blocks=True,
+        keep_trailing_newline=False,
+        loader=FileSystemLoader(''),
+        autoescape=select_autoescape(["html", "htm", "xml"]))
     return environment
 
 

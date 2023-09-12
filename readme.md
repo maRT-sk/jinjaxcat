@@ -184,7 +184,10 @@ To correctly shape the data, you must invoke the custom global variable {{split}
 Here's an example of how to use Jinja2 syntax in a cell to get all SUPPLIER_AIDs:
 
 ```jinja
-{% for article in articles_json %}{{article['SUPPLIER_AID']}}{{split}}{% endfor %}
+{% for article in articles_json %}
+{{article['SUPPLIER_AID']}}
+{{split}}
+{% endfor %}
 ```
 
 ## Jinja2 Filters in Templates
