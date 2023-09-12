@@ -288,6 +288,32 @@ output_file: path/to/output.csv
 
 Please note that all paths are relative to the location from where the command is executed.
 
+## JinjaXcat Automated Setup and Launch (Windows Only)
+
+PowerShell script _init_jinjaxcat.ps1_ simplifies the setup and launch process of the JinjaXcat Python application.
+Review the script contents before execution to ensure you understand its operations.
+
+### Instructions:
+
+1. Ensure that you're in the directory where you downloaded JinjaXcat from GitHub.
+2. Right-click on the script file and select 'Run with PowerShell'.
+3. If you don't have the necessary permissions, you can try running it via CLI using the following command:
+
+```powershell
+powershell -ExecutionPolicy Bypass -file ./init_jinjaxcat.ps1
+```
+
+### What Does The Script Do?
+
+Upon execution, the script performs the following tasks:
+
+1. Sets the current working directory to its location.
+2. Checks if the desired version of Python (3.11.5) is installed.
+3. If the required Python version is not found, it downloads and installs it.
+4. Sets up a Python virtual environment in the script's directory.
+5. Installs required dependencies from the requirements.txt file into the virtual environment.
+6. Launches the JinjaXcat application using Streamlit.
+
 ## Development Status
 
 Your feedback and contributions are greatly appreciated in helping to shape and enhance the JinjaXcat project.
