@@ -1,0 +1,39 @@
+------
+Test for loop:
+{% for product in products %}
+{{ product['Name']|upper }} is priced at {{ product['Price'] * 0.50 }} without VAT.
+{% endfor %}
+------
+Products priced between 300 and 1000:
+{% for product in products %}
+{% if 300 <= product['Price'] <= 1000 %}
+{{ product['Name'] }} is for {{ product['Price'] }}€!!!
+{% endif %}
+{% endfor %}
+------
+Products with names longer than 7 characters:
+{% for product in products %}
+{% if product['Name']|length > 7 %}
+{{ product['Name'] }}
+{% endif %}
+{% endfor %}
+------
+Most Expensive product:
+{% set highest_product = products|sort(attribute='Price', reverse=True)|first %}
+{{ highest_product['Name'] }} is priced at {{ highest_product['Price'] }}.
+------
+Average price of products:
+{{ (products|sum(attribute='Price')) / products|length }}
+------
+First 3 letters and last two letters of product names:
+{% for product in products %}
+{{ product['Name']|lower }} is {{ product['Name'][:3]|upper }}-{{ product['Name'][-2:]|upper }}
+{% endfor %}
+------
+Products starting with 'L':
+{% for product in products %}
+{% if product['Name'].startswith('L') %}
+{{ product['Name'] }}
+{% endif %}
+{% endfor %}
+------

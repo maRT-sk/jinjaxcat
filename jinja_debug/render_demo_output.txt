@@ -1,0 +1,33 @@
+------
+Test for loop:
+LAPTOP is priced at 600.0 without VAT.
+SMARTPHONE is priced at 400.0 without VAT.
+HEADPHONES is priced at 75.0 without VAT.
+TABLET is priced at 200.0 without VAT.
+SMARTWATCH is priced at 125.0 without VAT.
+------
+Products priced between 300 and 1000:
+Smartphone is for 800€!!!
+Tablet is for 400€!!!
+------
+Products with names longer than 7 characters:
+Smartphone
+Headphones
+Smartwatch
+------
+Most Expensive product:
+Laptop is priced at 1200.
+------
+Average price of products:
+560.0
+------
+First 3 letters and last two letters of product names:
+laptop is LAP-OP
+smartphone is SMA-NE
+headphones is HEA-ES
+tablet is TAB-ET
+smartwatch is SMA-CH
+------
+Products starting with 'L':
+Laptop
+------
