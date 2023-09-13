@@ -118,10 +118,14 @@ def load_data(input_files: list) -> dict:
             # Get the bytes object of the file and decode it using the detected encoding
             bytes_object = file.getvalue()
             string_object = bytes_object.decode(chardet.detect(bytes_object)['encoding'])
-            # dialect = csv.Sniffer().sniff(string_object)
+            # Determine the delimiter using the first 10 lines of the string_object.
+            sample_lines = string_object.splitlines()[:10]
+            sample = '\n'.join(sample_lines)
+            dialect = csv.Sniffer().sniff(sample)
+            delimiter = str(dialect.delimiter)
 
             # Load the CSV file into a pandas DataFrame and convert it to a dictionary
-            df = pd.read_csv(io.StringIO(string_object), dtype=str, quoting=3, sep=None, engine="python").fillna('')
+            df = pd.read_csv(io.StringIO(string_object), dtype=str, quoting=3, sep=delimiter, engine="python").fillna('')
             data_dict[name] = df.to_dict('records')
 
         elif extension == '.xlsx':
