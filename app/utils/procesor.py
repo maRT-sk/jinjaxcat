@@ -71,14 +71,17 @@ def generate_output(input_files: list, template_file: io.BytesIO, key_mapping: d
                         cell_value = cell.value.replace('}\n','}')  # Erase redundant newlines
                         template = environment.from_string(cell_value)  # Create a Jinja2 template from the cell value
                         rendered_output = template.render(**data_dict)  # Render the template using the data dictionary
-                        rendered_output = rendered_output.split('##')[0:-1]  # Split the rendered output by '##'
+                        split_output_list = rendered_output.split('##')  # Split the rendered output by '##'
 
-                        data = pd.Series(rendered_output)  # Convert the rendered output into a Pandas Series
-                        series = data.apply(pd.to_numeric, errors='ignore')  # function that converts str to numeric
+                        if split_output_list:  # If rendered output can be split into a list
+                            data = pd.Series(split_output_list)  # Convert the rendered output into a Pandas Series
+                            series = data.apply(pd.to_numeric, errors='ignore')  # function that converts str to numeric
 
-                        # Write the output values to the subsequent cells in the same column
-                        for i, value in enumerate(series):
-                            sheet.cell(row=cell.row + i, column=cell.column).value = value
+                            # Write the output values to the subsequent cells in the same column
+                            for i, value in enumerate(series):
+                                sheet.cell(row=cell.row + i, column=cell.column).value = value
+                        else:  # Output is a single value. Write it to the Excel cell.
+                            sheet.cell(row=cell.row, column=cell.column).value = rendered_output
 
         output_bytes = BytesIO()  # Create a BytesIO object to store the output data
         workbook.save(output_bytes)  # Save the workbook to the BytesIO object
