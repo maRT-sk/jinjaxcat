@@ -1,11 +1,5 @@
 ## Run this script from the directory where you downloaded JinjaXcat from GitHub.
-
-# This PowerShell script automates the setup and launch of the JinjaXcat Python app:
-# 1. Sets the directory to the script's location.
-# 2. Checks for a specific Python version and installs it if not found.
-# 3. Creates a virtual environment if it doesn't exist.
-# 4. Checks and installs dependencies from 'requirements.txt'.
-# 5. Launches JinjaXcat using Streamlit.
+# For more information, visit: github.com/maRT-sk/jinjaxcat#what-does-the-script-do
 
 # Set the current working directory to the directory of the script being run
 Set-Location -Path $PSScriptRoot
@@ -50,7 +44,7 @@ if (-Not(Test-Path '.\venv'))
 }
 
 # Activate venv and launch the JinjaXcat application using Streamlit
-Write-Host "Activating virtual environment '$env:VIRTUAL_ENV'..."
 . .\venv\Scripts\Activate
+Write-Host "Activated virtual environment '$env:VIRTUAL_ENV'..."
 Write-Host "Launching JinjaXcat application..."
 streamlit run 'app\jinjaxcat.py'
