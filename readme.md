@@ -190,7 +190,7 @@ Here's an example of how to use Jinja2 syntax in a cell to get all SUPPLIER_AIDs
 {% endfor %}
 ```
 
-## Jinja2 Filters in Templates
+## Jinja2 Filters and Globals in Templates
 
 JinjaXcat provides [builtin Jinja2 filters](https://jinja.palletsprojects.com/en/3.1.x/templates/#builtin-filters)  that
 you can use to manipulate and format data within your templates. These filters are available and can be used out of the
@@ -214,7 +214,8 @@ Some of the prebuilt filters and globals available in JinjaXcat include:
   filter out groups without any articles.
 
 As a developer, you can add custom filters and globals to JinjaXcat.
-Simply define and register them within the SandboxedEnvironment class in the `app\utils\environment.py` file.
+Place your `.py` scripts in the `app/utils/jinja_extensions` directory. Function names within these scripts will
+automatically be available as both globals and filters in your Jinja templates.
 This allows you to enhance the templating engine to meet your specific needs and requirements.
 
 The usage of filters and globals within a JinjaXcat template:

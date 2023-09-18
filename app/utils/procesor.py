@@ -12,11 +12,10 @@ import chardet
 import openpyxl
 import pandas as pd
 import requests
-from jinja2 import FileSystemLoader, select_autoescape
 from lxml import etree
 
 # Local application/library specific imports
-from .environment import CustomEnvironment
+from .jinja_environment import create_environment
 
 # Defining a named tuple to hold the result data
 Result = namedtuple('Result', ['type', 'msg', 'log'])
@@ -159,19 +158,7 @@ def load_data(input_files: list) -> dict:
     return data_dict  # Return the dictionary containing all the data
 
 
-def create_environment() -> CustomEnvironment:
-    """
-    Create a custom Jinja2 environment.
-    :return: Custom Jinja2 environment object.
-    """
-    # Initialize a custom Jinja2 environment
-    environment = CustomEnvironment(
-        trim_blocks=True,
-        lstrip_blocks=True,
-        keep_trailing_newline=False,
-        loader=FileSystemLoader(''),
-        autoescape=select_autoescape(["html", "htm", "xml"]))
-    return environment
+
 
 
 def prettify_output(content: str, extension) -> str | None:
