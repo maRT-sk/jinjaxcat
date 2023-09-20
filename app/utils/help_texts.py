@@ -35,7 +35,7 @@ help_dict = {
         """,
     "beautify_output":
         """
-        The optional 'Beautify Output' feature allows you to prettify XML and CSV files, making them visually more appealing and easier to read.
+        The optional 'Beautify Output' feature allows you to prettify XML files, making them visually more appealing and easier to read.
         When enabled, the output files will be formatted with indentation, line breaks, and proper spacing, resulting in a cleaner and more organized structure..
         """,
 }

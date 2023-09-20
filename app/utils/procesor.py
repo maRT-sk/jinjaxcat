@@ -67,7 +67,7 @@ def generate_output(input_files: list, template_file: io.BytesIO, key_mapping: d
 
                     # Check if the cell value starts with '{', indicating a Jinja2 template
                     if isinstance(cell.value, str) and cell.value.startswith('{'):
-                        cell_value = cell.value.replace('}\n','}')  # Erase redundant newlines
+                        cell_value = cell.value.replace('}\n', '}')  # Erase redundant newlines
                         template = environment.from_string(cell_value)  # Create a Jinja2 template from the cell value
                         rendered_output = template.render(**data_dict)  # Render the template using the data dictionary
                         split_output_list = rendered_output.split('##')  # Split the rendered output by '##'
@@ -118,14 +118,18 @@ def load_data(input_files: list) -> dict:
             bytes_object = file.getvalue()
             string_object = bytes_object.decode(chardet.detect(bytes_object)['encoding'])
             # Determine the delimiter using the first 10 lines of the string_object.
-            sample_lines = string_object.splitlines()[:10]
+            sample_lines = string_object.splitlines()[:5]
             sample = '\n'.join(sample_lines)
             dialect = csv.Sniffer().sniff(sample)
-            delimiter = str(dialect.delimiter)
+            gap = str(dialect.delimiter)
 
-            # Load the CSV file into a pandas DataFrame and convert it to a dictionary
-            df = pd.read_csv(io.StringIO(string_object), dtype=str, quoting=3, sep=delimiter, engine="python").fillna('')
-            data_dict[name] = df.to_dict('records')
+            # # Try loading the CSV into a DataFrame
+            try:
+                df = pd.read_csv(io.StringIO(string_object), dtype=str, sep=gap, engine="python").fillna('')
+            # If there's a parser error, read again ignoring quotes
+            except pd.errors.ParserError:
+                df = pd.read_csv(io.StringIO(string_object), dtype=str, quoting=3, sep=gap, engine="python").fillna('')
+            data_dict[name] = df.to_dict('records')  # Add DataFrame contents to data_dict under the key 'name'
 
         elif extension == '.xlsx':
             # Loop over each sheet in the Excel file
@@ -158,13 +162,9 @@ def load_data(input_files: list) -> dict:
     return data_dict  # Return the dictionary containing all the data
 
 
-
-
-
 def prettify_output(content: str, extension) -> str | None:
     """
-    Format the content based on the file type (.xml or .csv).
-    If the file is neither .xml nor .csv, the content is returned as is.
+    If the file is not .xml, the content is returned as is.
 
     :param content: String containing the content to be formatted.
     :param output_file_name: String containing the name of the output file.
@@ -183,32 +183,6 @@ def prettify_output(content: str, extension) -> str | None:
             # If the XML content is not valid, return None
             # Note: the exception handling here is not specific and should be improved in future revisions
             return None
-
-    # If the file is a CSV file, format the CSV content with aligned columns
-    elif extension == '.csv':
-        try:
-            rows = content.strip().split("\n")  # Split the CSV content into rows
-            dialect = csv.Sniffer().sniff(rows[0])  # Detect the delimiter from the header row
-            delimiter = dialect.delimiter
-            max_columns = max(len(row.split(delimiter)) for row in rows)  # Determine the maximum number of columns
-
-            formatted_rows = []
-            # Split each row into columns, trim leading and trailing whitespace, and pad with empty values if necessary
-            for row in rows:
-                columns = [column.strip() for column in row.split(delimiter)]
-                columns += [""] * (max_columns - len(columns))
-                formatted_rows.append(columns)
-
-            # Join the formatted rows into a single string
-            formatted_csv = "\n".join(
-                delimiter.join(row) for row in formatted_rows if any(column.strip() for column in row)
-            )
-            return formatted_csv
-        except:  # noqa: E722
-            # If the CSV content is not valid or cannot be parsed, return None
-            # Note: the exception handling here is not specific and should be improved in future revisions
-            return None
-    return None  # If the file is neither .xml nor .csv, return None
 
 
 def validate_xml(xml_file, schema_path) -> Result:

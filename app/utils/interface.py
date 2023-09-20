@@ -163,12 +163,12 @@ def select_xml_validation_file(template_file):
 def show_beautify_option(template_file):
     """
     Displays a checkbox to allow the user to choose to beautify the output file.
-    This function is only applicable for XML and CSV template files.
+    This function is only applicable for XML template files.
 
     :param template_file: The template file to beautify.
     :return: The state of the checkbox (True if checked, False otherwise), or None if the file type is not supported.
     """
-    if template_file.name.endswith(".xml") or template_file.name.endswith(".csv"):
+    if template_file.name.endswith(".xml"):
         st.subheader("Optional Output Settings:")
         return st.checkbox('Beautify Output File', help=help_dict["beautify_output"])
     else:
