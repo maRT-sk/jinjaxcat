@@ -38,6 +38,7 @@ def create_environment() -> SandboxedEnvironment:
         trim_blocks=True,
         lstrip_blocks=True,
         keep_trailing_newline=False,
+        autoescape=True,
         loader=FileSystemLoader(''),
     )
 
