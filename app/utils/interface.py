@@ -9,6 +9,9 @@ from streamlit.runtime.scriptrunner import get_script_run_ctx
 from .help_texts import help_dict
 from .procesor import generate_output, load_data, prettify_output, validate_xml
 
+MAX_OUTPUT_ERRORS = 100  # Sets the limit for the number of XSD/DTD validation errors displayed in the XML report
+EXCEL_PREVIEW_ROW_LIMIT = 250  # Maximum number of rows to be displayed in an Excel file preview
+
 
 @st.cache_data(show_spinner="Preparing data...")
 def load_data_cached(input_files):
@@ -190,7 +193,7 @@ def display_xlsx_frame(xlsx_file):
     # Iterate over each sheet
     for sheet_name in excel_sheet_names:
         st.markdown(f"📗 **{sheet_name}:**")
-        excel_df = excel_data[sheet_name].head(250)
+        excel_df = excel_data[sheet_name].head(EXCEL_PREVIEW_ROW_LIMIT)
         excel_df = excel_df.fillna('')
         excel_df.index = excel_df.index + 1
         excel_df.columns = excel_columns[:len(excel_df.columns)]  # Assign the letters as column names
@@ -229,7 +232,7 @@ def run_output_procedure(input_files, template_file, output_filename, validation
             output = prettified_output
             prettified_status = True
     if validation_file:
-        validation_status = validate_xml(output.encode(), validation_file)
+        validation_status = validate_xml(output.encode(), validation_file, MAX_OUTPUT_ERRORS)
 
     st.session_state['menu_index'] = "Output"
     st.session_state['output_state'] = (output, extension, validation_status, beautify_output, prettified_status)

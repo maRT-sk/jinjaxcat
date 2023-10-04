@@ -46,3 +46,18 @@ def get_groups_with_articles(articles, groups, delimiter=',', CATALOG_STRUCTURE=
 
     groups_with_articles = list(parent_ids) + leaf_ids
     return groups_with_articles
+
+
+def float_bme(value: str) -> float | str:
+    """
+    Converts a string to a float by replacing commas with dots, if present.
+    :param value: A string representing a float, potentially using commas as decimal separators.
+    :return: A float derived from the input string with commas replaced by dots,
+             or the original string if conversion is not possible.
+    """
+    try:
+        # Replacing comma with dot and converting to float
+        return float(value.replace(",", "."))
+    except ValueError:
+        # Handling the case when the conversion is not possible
+        return value

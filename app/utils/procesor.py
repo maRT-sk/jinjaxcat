@@ -185,11 +185,12 @@ def prettify_output(content: str, extension) -> str | None:
             return None
 
 
-def validate_xml(xml_file, schema_path) -> Result:
+def validate_xml(xml_file, schema_path, max_output_errors=100) -> Result:
     """
     Validate an XML file against a DTD or XSD schema.
     :param xml_file: String containing the XML file content.
     :param schema_path: String containing the path to the schema file.
+    :param max_output_errors: An integer representing the maximum number of errors to be displayed in output report.
     :return: Instance of Result with status, title and message.
     """
 
@@ -222,8 +223,11 @@ def validate_xml(xml_file, schema_path) -> Result:
 
     # Log whether the XML is valid or not, and any errors
     if is_valid:
-        return Result("OK", "Validation Passed",
-                      f"The XML output successfully matches the specified ({schema_type.upper()}) schema.")
+        ok_msg = f"The XML output successfully matches the specified ({schema_type.upper()}) schema."
+        return Result("OK", "Validation Passed", ok_msg)
     else:
-        return Result("KO", "Validation Failed",
-                      f"The XML output does not conform to the specified ({schema_type.upper()}) schema: \n\n{errors}")
+        ko_msg = (f"The XML output does not conform to the specified ({schema_type.upper()}) schema!\n\n"
+                  f"Displaying {min(max_output_errors, len(errors))} out of {len(errors)} errors in the output file:"
+                  f"\n\n{errors[:max_output_errors]}"
+                  )
+        return Result("KO", "Validation Failed", ko_msg)

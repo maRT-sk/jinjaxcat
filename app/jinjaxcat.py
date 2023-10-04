@@ -81,6 +81,7 @@ elif main_menu == "Template":
         display_template(template_file)
 
 elif main_menu == "Output":
+    PREVIEW_CHAR_LIMIT = 35000  # Maximum number of text characters to be displayed in output previews
     if not st.session_state['output_state']:
         st.info(
             "Output has not been generated yet. Please use the **Generate Output** button in the sidebar on the left "
@@ -89,7 +90,7 @@ elif main_menu == "Output":
         output, extension, validation_status, beautify_output, prettified_status = st.session_state['output_state']
         if output and extension != '.xlsx':
             st.success("**Success**:\n The output hss been generated successfully.")
-            st.info("**Info**: Previewing output file and displaying the first 35000 characters.")
+            st.info(f"**Info**: Previewing output file and displaying the first {PREVIEW_CHAR_LIMIT} characters.")
             if validation_status:
                 if validation_status.type == 'KO':
                     st.error(f"**{validation_status.msg}**:\n\n {validation_status.log}")
@@ -100,8 +101,8 @@ elif main_menu == "Output":
                     st.success("**Success**:\n The output has been beautified successfully.")
                 else:
                     st.error("**Error**:\n The output could not be beautified. The original output remains unchanged.")
-            if len(output) > 35000:
-                output = output[:35000] + "..."
+            if len(output) > PREVIEW_CHAR_LIMIT:
+                output = output[:PREVIEW_CHAR_LIMIT] + "..."
             st.code(output, language=extension[1:], line_numbers=True)
         elif output and extension == '.xlsx':
             st.success("**Success**:\n The output has been generated successfully.")
